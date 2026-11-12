@@ -1,0 +1,1371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theme 1 – On the move · Grammar &amp; Vocabulary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lilita+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#CFE8F0; --bg2:#EEF7F2; --ink:#1D2B33; --muted:#4F5F69; --card:#fff; --line:#D5DEE3;
+  --red:#C8102E; --red2:#8E0B20; --green:#00843D; --green2:#005C2A; --gold:#FFC72C; --slate:#3B4A54;
+  --cS:#2F6FD6; --cA:#C8102E; --cV:#00843D; --cN:#E07A00; --cQ:#7B3FB5; --cC:#0E8C8C;
+  --ok:#00843D; --okbg:#DDF3E6; --no:#C8102E; --nobg:#FCE3E6;
+  --shadow:0 4px 0 rgba(29,43,51,.16); --r:18px;
+}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+html{font-size:18px}
+html.big{font-size:23px}
+body{margin:0;color:var(--ink);background:linear-gradient(180deg,var(--bg1),var(--bg2)) fixed;font:1rem/1.55 "Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+h1,h2,h3{font-family:"Lilita One","Atkinson Hyperlegible",system-ui,sans-serif;font-weight:400;line-height:1.15;margin:0 0 .4em}
+h1{font-size:clamp(2rem,5vw,3.2rem)} h2{font-size:1.7rem} h3{font-size:1.25rem}
+p{margin:0 0 .8em}
+button{font:inherit;cursor:pointer;touch-action:manipulation}
+:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+.wrap{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:14px 16px 140px}
+.hills{position:fixed;left:0;right:0;bottom:0;z-index:0;pointer-events:none}
+.hills svg{display:block;width:100%;height:auto}
+.card{background:var(--card);border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow);margin-bottom:18px}
+.muted{color:var(--muted)} .small{font-size:.88rem}
+
+/* bars & buttons */
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.bar .grow{flex:1}
+.ibtn{min-height:48px;min-width:48px;border-radius:14px;border:0;background:#fff;color:var(--ink);box-shadow:var(--shadow);font-weight:700;padding:0 14px;display:inline-flex;align-items:center;gap:6px}
+.ibtn.on{background:var(--slate);color:#fff}
+.btn{border:0;border-radius:14px;padding:12px 22px;min-height:52px;font-weight:700;background:var(--red);color:#fff;box-shadow:0 4px 0 var(--red2)}
+.btn.green{background:var(--green);box-shadow:0 4px 0 var(--green2)}
+.btn.alt{background:#fff;color:var(--ink);box-shadow:0 4px 0 var(--line);border:2px solid var(--line)}
+.btn:active,.ibtn:active{transform:translateY(3px)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px}
+
+/* home */
+.hero{display:flex;align-items:center;gap:18px;margin:4px 0 18px}
+.hero svg{flex:0 0 auto;width:clamp(86px,13vw,140px);height:auto}
+.lessons{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.lcard{border:0;text-align:left;background:#fff;border-radius:20px;padding:18px 20px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start;color:var(--ink)}
+.lcard .num{flex:0 0 auto;font-family:"Lilita One",sans-serif;font-size:1.4rem;color:#fff;background:var(--red);border-radius:12px;padding:6px 10px;min-width:62px;text-align:center}
+.lcard:nth-child(even) .num{background:var(--green)}
+.lcard b{display:block;font-size:1.12rem}
+.lcard small{color:var(--muted)}
+.lcard .r{font-size:.75rem;background:var(--gold);color:#3a2a00;border-radius:6px;padding:1px 6px;margin-left:6px;font-weight:700;vertical-align:middle}
+.legend{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+/* colour blocks */
+.blk{display:inline-flex;flex-direction:column;align-items:center;vertical-align:top;margin:0 2px 4px;line-height:1.2}
+.blk > span:first-child{border-radius:10px;padding:5px 9px;color:#fff;font-weight:700}
+.blk small{font-size:.62rem;font-weight:700;margin-top:3px;letter-spacing:.02em;white-space:nowrap}
+.blk.S > span:first-child{background:var(--cS)} .blk.S small{color:var(--cS)}
+.blk.A > span:first-child{background:var(--cA)} .blk.A small{color:var(--cA)}
+.blk.V > span:first-child{background:var(--cV)} .blk.V small{color:var(--cV)}
+.blk.N > span:first-child{background:var(--cN)} .blk.N small{color:#A05600}
+.blk.Q > span:first-child{background:var(--cQ)} .blk.Q small{color:var(--cQ)}
+.blk.C > span:first-child{background:var(--cC)} .blk.C small{color:var(--cC)}
+.blk.moved > span:first-child{box-shadow:0 0 0 3px var(--gold)}
+.blk.nolabel small{visibility:hidden}
+.c-S{color:var(--cS);font-weight:700} .c-A{color:var(--cA);font-weight:700} .c-V{color:var(--cV);font-weight:700} .c-N{color:#B35F00;font-weight:700} .c-Q{color:var(--cQ);font-weight:700} .c-C{color:var(--cC);font-weight:700}
+.plain{display:inline-block;padding:5px 2px;vertical-align:top;margin-bottom:4px}
+
+/* pattern table */
+.ptable{display:grid;gap:10px}
+.prow{display:grid;grid-template-columns:54px 1fr;gap:10px;align-items:start;background:#F7FAF8;border-radius:14px;padding:10px 12px}
+.badge{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;font-family:"Lilita One",sans-serif;font-size:1.5rem;color:#fff}
+.badge.k-plus{background:var(--green)} .badge.k-minus{background:#E07A00} .badge.k-q{background:var(--cQ)} .badge.k-wh{background:var(--cQ);font-size:.95rem} .badge.k-past{background:var(--slate);font-size:.8rem}
+.prow .sub{font-size:.9rem;color:var(--muted);margin-top:2px}
+
+/* sentence machine */
+.machine{background:#10334A;color:#fff;border-radius:18px;padding:18px;margin:14px 0}
+.machine h3{color:var(--gold)}
+.mline{min-height:92px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:4px;padding:10px 0;font-size:1.25rem}
+.mline .plain{color:#fff}
+.mline .blk small{color:#fff !important;opacity:.85}
+.mbtns{display:flex;gap:10px;flex-wrap:wrap}
+.mbtns button{border:0;border-radius:12px;min-height:52px;min-width:64px;font-size:1.3rem;font-weight:700;background:#fff;color:var(--ink)}
+.mbtns button.on{background:var(--gold)}
+.mnote{min-height:2.6em;margin:8px 0 0;color:#E9F3F7}
+
+.info{border-radius:14px;padding:12px 16px;margin:12px 0}
+.info.form{background:#FFF6D6;border-left:6px solid var(--gold)}
+.info.move{background:#EEF3FB;border-left:6px solid var(--cS)}
+.info.watch{background:#FCE3E6;border-left:6px solid var(--red)}
+.info.sig{background:#E7F4EC;border-left:6px solid var(--green)}
+.tl{margin:14px 0;background:#F7FAF8;border-radius:14px;padding:14px}
+.conn{display:flex;flex-wrap:wrap;gap:8px}
+.conn span{background:#E3F4F4;border-radius:10px;padding:4px 10px}
+.de-toggle{float:right}
+
+/* lesson nav */
+.steps{display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:5;padding:10px 0;background:linear-gradient(var(--bg1) 70%,transparent)}
+.steps a{text-decoration:none;color:var(--ink);background:#fff;border-radius:999px;padding:8px 14px;font-weight:700;box-shadow:var(--shadow)}
+.exhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.exhead .tag{font-family:"Lilita One",sans-serif;background:var(--red);color:#fff;border-radius:10px;padding:2px 10px}
+
+/* exercises */
+.item{display:grid;grid-template-columns:48px 1fr 34px;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0}
+.item .badge{width:38px;height:38px;font-size:1.3rem}
+.item .res{font-size:1.4rem;text-align:center}
+.sent{font-size:1.15rem;line-height:2.1}
+.choice{display:inline-flex;gap:4px;vertical-align:middle;margin:0 3px}
+.choice button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:2px 10px;font-weight:700;color:var(--ink);min-height:40px}
+.choice button.sel{border-color:var(--cS);background:#E8F0FC}
+.choice button.right{border-color:var(--ok);background:var(--okbg)}
+.choice button.wrong{border-color:var(--no);background:var(--nobg)}
+.gap{font:inherit;font-size:1.05rem;width:9.5em;max-width:60vw;padding:4px 8px;border:2px solid var(--line);border-bottom:3px solid var(--cS);border-radius:8px;margin:0 3px}
+.gap.right{border-color:var(--ok);background:var(--okbg)} .gap.wrong{border-color:var(--no);background:var(--nobg)}
+.hint{color:var(--muted);font-size:.92rem}
+.sol{display:block;font-size:.95rem;color:var(--green2);font-weight:700;line-height:1.4}
+textarea{width:100%;min-height:150px;font:inherit;font-size:1.1rem;padding:12px;border:2px solid var(--line);border-radius:12px}
+.model{background:#F7FAF8;border-radius:14px;padding:12px 16px;margin-top:12px}
+.model li{margin-bottom:4px}
+.chk{display:flex;gap:10px;align-items:flex-start;margin:6px 0}
+.chk input{width:24px;height:24px;flex:0 0 24px;accent-color:var(--green)}
+.score{font-weight:700;margin-left:auto}
+
+/* vocabulary */
+.voc{border:0;background:none;padding:0;font:inherit;color:inherit;border-bottom:2px dotted var(--green);cursor:help}
+.voc:hover,.voc.open{background:#E7F4EC;border-radius:4px}
+.pop{position:absolute;z-index:50;background:var(--slate);color:#fff;border-radius:12px;padding:10px 14px;max-width:280px;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:.95rem;line-height:1.35}
+.pop b{display:block;color:var(--gold)}
+
+@media (max-width:640px){
+  .item{grid-template-columns:40px 1fr 26px}
+  .prow{grid-template-columns:44px 1fr}
+  .mline{font-size:1.05rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{.steps,.bar,.hills,.row{display:none}.card{box-shadow:none;border:1px solid #ccc}}
+
+/* ===== start screen & vocabulary ===== */
+.big2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.tile{border:0;border-radius:24px;padding:26px 24px;text-align:left;color:#fff;background:var(--red);box-shadow:0 6px 0 var(--red2);display:flex;flex-direction:column;gap:6px;min-height:190px}
+.tile.green{background:var(--green);box-shadow:0 6px 0 var(--green2)}
+.tile .ico{font-size:2.6rem;line-height:1}
+.tile b{font-family:"Lilita One",sans-serif;font-weight:400;font-size:2rem}
+.tile small{font-size:1rem;opacity:.95}
+.tile:active{transform:translateY(4px)}
+.btn.sm{min-height:44px;padding:8px 16px}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:10px}
+.chip{border:3px solid var(--line);background:#fff;border-radius:14px;padding:8px 6px;color:var(--ink);display:flex;flex-direction:column;align-items:center;min-height:64px}
+.chip b{font-family:"Lilita One",sans-serif;font-weight:400;font-size:1.35rem;line-height:1.1}
+.chip small{font-size:.72rem;color:var(--muted)}
+.chip[aria-pressed="true"]{border-color:var(--green);background:var(--okbg)}
+.chip[aria-pressed="true"]::after{content:"✓";position:absolute;margin:-14px 0 0 54px;color:var(--green);font-weight:700}
+.chip{position:relative}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.mode{border:3px solid var(--line);background:#F7FAF8;border-radius:18px;padding:16px;text-align:left;color:var(--ink);display:flex;flex-direction:column;gap:4px}
+.mode:hover{border-color:var(--green)}
+.mode .ico{font-size:2rem;line-height:1}
+.mode b{font-size:1.2rem}
+.mode small{color:var(--muted)}
+.warn{background:var(--nobg);color:var(--red2);border-radius:12px;padding:10px 14px;margin:12px 0 0;font-weight:700}
+.prog{height:14px;background:#fff;border-radius:99px;overflow:hidden;box-shadow:inset 0 0 0 2px var(--line)}
+.prog div{height:100%;background:var(--green);width:0;transition:width .3s}
+.center{justify-content:center}
+.fc{display:block;width:100%;max-width:620px;margin:10px auto 0;height:300px;border:0;background:none;padding:0;perspective:1200px;color:var(--ink)}
+.fc .in{display:block;position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.fc.flip .in{transform:rotateY(180deg)}
+.fc .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:24px;background:#fff;box-shadow:0 6px 0 rgba(29,43,51,.16);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;gap:10px}
+.fc .back{transform:rotateY(180deg);background:#FFF6D6}
+.fc .face b{font-size:clamp(1.6rem,4.5vw,2.4rem);line-height:1.2}
+.fc .face small{position:absolute;top:12px;left:16px;background:var(--slate);color:#fff;border-radius:8px;padding:1px 8px;font-weight:700}
+.fc .face em{color:var(--muted);font-style:normal;font-size:.95rem}
+.done{text-align:center}
+.bank{display:flex;flex-wrap:wrap;gap:8px;background:#FFF6D6;border-radius:14px;padding:12px;margin:12px 0}
+.bank span{background:#fff;border-radius:10px;padding:4px 12px;font-weight:700;box-shadow:0 2px 0 var(--line)}
+.gap.wide{width:12em}
+.badge.k-num{background:var(--slate);font-size:1.1rem}
+mark{background:#FFE07A;color:var(--ink);border-radius:5px;padding:0 4px;font-weight:700;box-shadow:0 2px 0 #E0B000}
+.tr .de{font-size:1.2rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.tr .de .badge{width:36px;height:36px}
+.tin{width:100%;font:inherit;font-size:1.1rem;padding:10px 12px;border:2px solid var(--line);border-bottom:3px solid var(--cS);border-radius:10px}
+.tin.right{border-color:var(--ok);background:var(--okbg)} .tin.wrong{border-color:var(--no);background:var(--nobg)}
+.fbk p{margin:10px 0 0}
+.okmsg{color:var(--green2);font-weight:700} .nomsg{color:var(--red2);font-weight:700}
+.seg{display:inline-flex;flex-wrap:wrap;gap:0;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:12px}
+.seg button{border:0;background:#fff;padding:10px 18px;min-height:48px;font-weight:700;color:var(--ink);border-right:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--green);color:#fff}
+.ivt{display:grid;gap:0}
+.ivh,.ivr{display:grid;grid-template-columns:minmax(150px,1.2fr) minmax(150px,1fr) 34px;gap:10px;align-items:center}
+.ivr.three,.ivh.three{grid-template-columns:minmax(150px,1.1fr) minmax(130px,1fr) minmax(130px,1fr) 34px}
+.ivh{font-size:.8rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding-bottom:4px;border-bottom:2px solid var(--line)}
+.ivr{padding:9px 0;border-bottom:1px solid var(--line)}
+.ivr small{display:block;color:var(--muted);font-size:.85rem}
+.ivr .res{font-size:1.3rem;text-align:center}
+.ivr .sol{grid-column:1/-1;margin-top:-4px}
+.ivf{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.ivf .gap{width:7.5em;margin:0}
+.ivf .gap::placeholder{color:#9AA7AE;font-size:.85rem}
+.vt{width:100%;border-collapse:collapse}
+.vt th,.vt td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+.vt th{font-size:.85rem;color:var(--muted)}
+.chat{display:flex;flex-direction:column;gap:12px}
+.bub{position:relative;max-width:88%;background:#EEF3FB;border-radius:18px 18px 18px 4px;padding:10px 46px 10px 14px}
+.bub.r{align-self:flex-end;background:#E7F4EC;border-radius:18px 18px 4px 18px}
+.bub .who{display:block;font-weight:700;font-size:.85rem;color:var(--muted)}
+.bub p{margin:0;font-size:1.12rem;line-height:2}
+.bub .detx{font-size:.98rem;line-height:1.45;color:var(--slate);font-style:italic;border-top:1px dashed var(--line);margin-top:6px;padding-top:6px}
+.debtn{position:absolute;top:6px;right:6px;width:36px;height:36px;border:0;border-radius:10px;background:#fff;box-shadow:0 2px 0 var(--line);font-size:1.05rem;padding:0}
+.debtn[aria-pressed="true"]{background:var(--gold)}
+.pgap{font:inherit;font-size:1rem;min-width:7em;min-height:38px;border:2px dashed var(--cS);background:#fff;border-radius:10px;padding:2px 10px;color:var(--ink);line-height:1.4;vertical-align:middle;text-align:left}
+.pgap.act{border-style:solid;box-shadow:0 0 0 3px var(--gold)}
+.pgap.filled{border-style:solid;background:#E8F0FC;font-weight:700}
+.pgap.right{border-color:var(--ok);background:var(--okbg)} .pgap.wrong{border-color:var(--no);background:var(--nobg)}
+.pbank{position:sticky;bottom:0;z-index:6;display:flex;flex-wrap:wrap;gap:8px;background:#FFF6D6;border-radius:16px;padding:12px;box-shadow:0 -4px 16px rgba(0,0,0,.12);margin-top:6px}
+.ph{border:0;background:#fff;border-radius:12px;padding:8px 12px;font-weight:700;color:var(--ink);box-shadow:0 3px 0 var(--line);min-height:44px;text-align:left}
+.ph:disabled{opacity:.3;cursor:default;box-shadow:none}
+@media (max-width:640px){
+  .ivh{display:none}
+  .ivr,.ivr.three{grid-template-columns:1fr 30px}
+  .ivr > span:first-child{grid-column:1/-1}
+  .ivr .ivf{grid-column:1}
+  .ivr .res{grid-column:2;grid-row:2}
+  .bub{max-width:100%}
+  .fc{height:240px}
+  .pbank{max-height:38vh;overflow:auto;padding:8px;gap:6px}
+  .ph{font-size:.9rem;min-height:40px;padding:6px 10px}
+  .seg{display:flex}
+  .seg button{flex:1;padding:10px 8px}
+}
+
+</style>
+</head>
+<body>
+<main class="wrap" id="app" aria-live="polite"></main>
+<noscript>Please turn on JavaScript.</noscript>
+<script>
+(function(){
+"use strict";
+// ===== THEME 1 WORD LIST (Camden Town 7, TB pp. 221–225) – used for click-to-translate =====
+// key: [English entry as in the book, German]
+const WORDS = {
+  "advice":["advice","Rat(schlag), Ratschläge"],
+  "magazine":["magazine","Zeitschrift, Magazin"],
+  "desperate":["desperate","verzweifelt"],
+  "coach":["coach","Trainer/in, Coach"],
+  "argue":["to argue (about)","sich streiten (wegen)"],
+  "all the time":["all the time","die ganze Zeit"],
+  "stuff":["stuff","Zeug, Sachen"],
+  "normal":["normal","normal, üblich"],
+  "obviously":["obviously","offensichtlich, deutlich"],
+  "organize":["to organize","organisieren"],
+  "get married":["to get married","heiraten"],
+  "embarrassed":["embarrassed","verlegen, peinlich berührt"],
+  "although":["although","obwohl"],
+  "fall in love":["to fall in love (with sb)","sich (in jdn) verlieben"],
+  "broken":["broken","zerbrochen, kaputt, gebrochen"],
+  "heart":["heart","Herz"],
+  "hang out":["to hang out with sb","Zeit mit jdm verbringen"],
+  "difference":["difference","Unterschied"],
+  "nobody":["nobody","niemand, keiner"],
+  "helpful":["helpful","hilfsbereit, hilfreich, nützlich"],
+  "useful":["useful","nützlich, praktisch"],
+  "make up":["to make up","erfinden, (sich) ausdenken"],
+  "collect":["to collect","(ein)sammeln"],
+  "reaction":["reaction (to)","Reaktion (auf)"],
+  "while":["while","während, als"],
+  "rather":["rather","ziemlich, recht"],
+  "wedding":["wedding","Hochzeit"],
+  "pancake":["pancake","Pfannkuchen"],
+  "turn on":["to turn on","einschalten, anmachen"],
+  "sing along":["to sing along, sang along, sung along","mitsingen"],
+  "however":["however","jedoch, aber"],
+  "smile":["smile","Lächeln"],
+  "quite":["quite","ziemlich, ganz"],
+  "town":["town","Stadt"],
+  "slam the door shut":["to slam the door shut","die Tür zuschlagen"],
+  "take a deep breath":["to take a deep breath","tief Luft holen"],
+  "hug":["to hug","umarmen"],
+  "expect":["to expect","erwarten, rechnen (mit)"],
+  "completely":["completely","völlig"],
+  "helpless":["helpless","hilflos, machtlos"],
+  "move":["to move","(sich) bewegen; (um)ziehen"],
+  "turn away":["to turn away","sich abwenden"],
+  "still":["still","(immer) noch"],
+  "even if":["even if","selbst wenn"],
+  "country":["country","Land"],
+  "capital":["capital (city)","Hauptstadt"],
+  "Welsh":["Welsh","Walisisch, walisisch"],
+  "note":["note","Notiz, Mitteilung"],
+  "travel":["to travel","reisen"],
+  "drive":["to drive, drove, driven","fahren"],
+  "pack":["to pack","(ein)packen"],
+  "simple":["simple","einfach"],
+  "feel like":["to feel like doing sth","Lust haben, etw zu tun"],
+  "break down":["to break down, broke down, broken down","zusammenbrechen; stehen bleiben (Auto)"],
+  "belong":["to belong","(dazu)gehören"],
+  "lost":["lost","verlaufen, verloren"],
+  "mood":["mood","Laune, Stimmung"],
+  "patient":["patient","geduldig"],
+  "empty":["empty","leer"],
+  "goodbye":["goodbye","Abschied(s-)"],
+  "panic":["to panic","in Panik geraten"],
+  "be missing":["to be missing","fehlen"],
+  "flat":["flat","(Etagen)Wohnung"],
+  "persuade":["to persuade","überreden, überzeugen"],
+  "change":["change","(Ver)Änderung, Wechsel"],
+  "conversation":["conversation","Gespräch, Unterhaltung"],
+  "chat":["to chat","plaudern, chatten"],
+  "puppy":["puppy","junger Hund, Welpe"],
+  "headphones":["headphones","Kopfhörer"],
+  "so":["so","also, deshalb; damit"],
+  "experience":["experience","Erfahrung, Erlebnis"],
+  "give up":["to give up, gave up, given up","aufgeben"],
+  "get together":["to get together","sich treffen; wieder zusammenkommen"],
+  "moment":["moment","Moment, Augenblick"],
+  "fight":["fight","Kampf; hier: Streit"],
+  "as":["as","weil, da"],
+  "brave":["brave","tapfer, mutig"],
+  "latest":["latest","neueste(r, s)"],
+  "match":["match","Spiel, Partie"],
+  "costume":["costume","Kostüm"],
+  "uncomfortable":["uncomfortable","unbequem, unbehaglich"],
+  "polite":["polite","höflich"],
+  "take off":["to take off, took off, taken off","ausziehen, abnehmen"],
+  "directly":["directly","direkt, sofort"],
+  "have in common":["to have sth in common (with sb)","etw (mit jdm) gemeinsam haben"],
+  "spelling":["spelling","Rechtschreibung"],
+  "Good luck":["Good luck!","Viel Glück!"],
+  "might":["might","könnte, vielleicht"]
+};
+
+// ===== LESSONS – Camden Town 7, Grammar Theme 1 (G1–G5) =====
+// Colour blocks: [S subject] [A helping verb] [V verb] [N not] [Q question word] [C connective]
+// Vocabulary (click → German): {shown text|key}  ·  Exercise 1 choice: [[option A|option B]] (a = correct)
+// Exercise 2: ___ = gap, (verb) given in the sentence; a = one list of accepted answers per gap
+const STORY = {
+  en: "Cerys (12) and her brother Dylan (14) live in Conwy, a small town in North Wales. Their best friend is Rhys. Their grandma – in Welsh they call her “Nain” – lives next door. And there's Bryn, the family's new puppy.",
+  de: "Cerys (12) und ihr Bruder Dylan (14) wohnen in Conwy, einer kleinen Stadt in Nordwales. Ihr bester Freund ist Rhys. Ihre Oma – auf Walisisch sagen sie „Nain“ – wohnt nebenan. Und dann gibt es noch Bryn, den neuen Welpen der Familie."
+};
+
+const LESSONS = [
+{
+  id:"G1", tag:"R", title:"The present progressive", de:"Die Verlaufsform der Gegenwart", page:"p. 193",
+  use:{ en:"Use the <b>present progressive</b> for things that are happening <b>now</b> – at the moment you are speaking. The action is not finished yet.",
+        de:"Das <b>present progressive</b> verwendest du für Dinge, die <b>gerade jetzt</b> passieren. Die Handlung ist noch nicht abgeschlossen. Im Deutschen gibt es diese Form nicht – wir sagen oft „gerade“: <i>Cerys liest gerade.</i>" },
+  form:{ en:"am / is / are + verb + <b>-ing</b>", de:"am / is / are + Verb + <b>-ing</b>" },
+  rows:[
+    { k:"+", s:"[S Cerys] [A is] [V reading] a {magazine|magazine}." },
+    { k:"-", s:"[S Cerys] [A is] [N not] [V reading] a {magazine|magazine}.", alt:"[S Cerys] [A is][N n't] [V reading] a {magazine|magazine}." },
+    { k:"?", s:"[A Is] [S Cerys] [V reading] a {magazine|magazine}?", short:"Yes, she is. / No, she isn't." },
+    { k:"wh", s:"[Q What] [A is] [S Cerys] [V reading]?" }
+  ],
+  move:{ en:"<b>Negative:</b> <span class='c-N'>not</span> comes right after am / is / are.<br><b>Question:</b> am / is / are <b>jumps to the front</b>, before the subject.",
+         de:"<b>Verneinung:</b> <span class='c-N'>not</span> steht direkt hinter am / is / are.<br><b>Frage:</b> am / is / are <b>springt nach vorne</b>, vor das Subjekt." },
+  signal:"now · right now · at the moment · Look! · Listen!",
+  watch:{ en:"I am not → <b>I'm not</b> (never: <s>I amn't</s>). Spelling: make → mak<b>ing</b>, sit → si<b>tt</b>ing.",
+          de:"I am not → <b>I'm not</b> (niemals: <s>I amn't</s>). Schreibung: make → mak<b>ing</b> (stummes e fällt weg), sit → si<b>tt</b>ing (Konsonant verdoppeln)." },
+  ex1:[
+    { k:"+", q:"Look! Dylan [[is|are]] {hugging|hug} Nain.", a:"is" },
+    { k:"+", q:"Listen! The kids [[sing|are singing]] {along|sing along} to the radio.", a:"are singing" },
+    { k:"-", q:"Rhys [[isn't|not]] {chatting|chat} with his friends right now.", a:"isn't" },
+    { k:"-", q:"We [[don't|aren't]] {packing|pack} our bags at the moment.", a:"aren't" },
+    { k:"?", q:"[[Is|Does]] Cerys wearing her {headphones|headphones}?", a:"Is" },
+    { k:"?", q:"Why [[is|are]] you {arguing|argue}? – Because Dylan took my {stuff|stuff}!", a:"are" }
+  ],
+  ex2:[
+    { k:"+", q:"Right now Mum ___ (drive) us to the station.", a:[["is driving","'s driving"]] },
+    { k:"+", q:"Look! The {puppy|puppy} ___ (sleep) in my bed!", a:[["is sleeping","'s sleeping"]] },
+    { k:"-", q:"I ___ (not / argue) with you, Dylan!", a:[["am not arguing","'m not arguing"]] },
+    { k:"-", q:"Cerys and Rhys ___ (not / chat) at the moment.", a:[["aren't chatting","are not chatting"]] },
+    { k:"?", q:"___ you ___ (listen) to me?", a:[["Are"],["listening"]] },
+    { k:"?", q:"What ___ Dylan ___ (pack) for the trip?", a:[["is"],["packing"]] }
+  ],
+  ex3:{ en:"Think of a busy place you know – your kitchen, the school yard, a bus. Write three sentences about what is happening <b>right now</b>: one statement (+), one negative (–) and one question (?).",
+        de:"Denk an einen belebten Ort, den du kennst – eure Küche, den Schulhof, einen Bus. Schreib drei Sätze darüber, was <b>gerade jetzt</b> passiert: eine Aussage (+), eine Verneinung (–) und eine Frage (?).",
+        model:["My dad is making pancakes.","My sister isn't helping him.","Is the dog sleeping under the table?"],
+        check:["I used am / is / are + -ing.","In the negative sentence, not comes after am / is / are.","In the question, am / is / are is at the front.","My question ends with a question mark."] }
+},
+{
+  id:"G2a", tag:"", title:"The past progressive (1): form", de:"Die Verlaufsform der Vergangenheit: Form", page:"p. 193",
+  use:{ en:"Use the <b>past progressive</b> to say what was <b>going on</b> at a certain time in the past. The action had started, but it wasn't finished yet.",
+        de:"Mit dem <b>past progressive</b> sagst du, was zu einem bestimmten Zeitpunkt in der Vergangenheit <b>gerade im Gange war</b>. Die Handlung hatte schon begonnen, war aber noch nicht fertig: <i>Um 8 Uhr las Dylan gerade.</i>" },
+  form:{ en:"was / were + verb + <b>-ing</b>", de:"was / were + Verb + <b>-ing</b>" },
+  rows:[
+    { k:"+", s:"At eight o'clock [S Dylan] [A was] [V listening] to music." },
+    { k:"-", s:"At eight o'clock [S Dylan] [A was] [N not] [V listening] to music.", alt:"[S Dylan] [A was][N n't] [V listening] to music." },
+    { k:"?", s:"[A Was] [S Dylan] [V listening] to music at eight o'clock?", short:"Yes, he was. / No, he wasn't." },
+    { k:"wh", s:"[Q What] [A were] [S you] [V doing] at eight o'clock?" }
+  ],
+  move:{ en:"<b>was</b> with I / he / she / it – <b>were</b> with you / we / they.<br><b>Negative:</b> <span class='c-N'>not</span> comes after was / were.<br><b>Question:</b> was / were <b>jumps to the front</b>.",
+         de:"<b>was</b> bei I / he / she / it – <b>were</b> bei you / we / they.<br><b>Verneinung:</b> <span class='c-N'>not</span> steht hinter was / were.<br><b>Frage:</b> was / were <b>springt nach vorne</b>." },
+  signal:"at eight o'clock yesterday · all evening · this time last week",
+  watch:{ en:"It's the same idea as the present progressive – just with <b>was / were</b> instead of am / is / are.",
+          de:"Es funktioniert genau wie das present progressive – nur mit <b>was / were</b> statt am / is / are." },
+  ex1:[
+    { k:"+", q:"At seven o'clock we [[was|were]] having {pancakes|pancake}.", a:"were" },
+    { k:"+", q:"Cerys [[was|were]] {chatting|chat} with Rhys all evening.", a:"was" },
+    { k:"-", q:"Sorry, I [[weren't|wasn't]] listening. What did you say?", a:"wasn't" },
+    { k:"-", q:"The kids at the party [[weren't|wasn't]] wearing {costumes|costume}.", a:"weren't" },
+    { k:"?", q:"[[Were|Was]] you {travelling|travel} by train yesterday at ten?", a:"Were" },
+    { k:"?", q:"What [[was|were]] Dylan doing at the {match|match}?", a:"was" }
+  ],
+  ex2:[
+    { k:"+", q:"At midnight Nain ___ (still / read) her book.", a:[["was still reading"]] },
+    { k:"+", q:"We ___ (organize) the {goodbye|goodbye} party all afternoon.", a:[["were organizing","were organising"]] },
+    { k:"-", q:"Dylan ___ (not / sleep) at eleven o'clock last night.", a:[["wasn't sleeping","was not sleeping"]] },
+    { k:"-", q:"My friends ___ (not / wait) for me at the station.", a:[["weren't waiting","were not waiting"]] },
+    { k:"?", q:"___ Cerys ___ (cry)? – No, she was laughing.", a:[["Was"],["crying"]] },
+    { k:"?", q:"Why ___ you ___ (argue) with Mum?", a:[["were"],["arguing"]] }
+  ],
+  ex3:{ en:"What were the people in your family doing <b>yesterday at six o'clock in the evening</b>? Write one statement (+), one negative (–) and one question (?) to a friend.",
+        de:"Was haben die Leute in deiner Familie <b>gestern um 18 Uhr</b> gerade gemacht? Schreib eine Aussage (+), eine Verneinung (–) und eine Frage (?) an eine Freundin oder einen Freund.",
+        model:["Yesterday at six my mum was cooking dinner.","My brother wasn't doing his homework.","What were you doing at six o'clock?"],
+        check:["I used was / were + -ing.","I used was with I / he / she / it and were with you / we / they.","In the question, was / were is at the front (after the question word)."] }
+},
+{
+  id:"G2b", tag:"", title:"The past progressive (2): with the simple past", de:"Verlaufsform der Vergangenheit und einfache Vergangenheit", page:"p. 194",
+  use:{ en:"You often use both tenses together: the <b>past progressive</b> for the action that was <b>going on</b> (the background), and the <b>simple past</b> for the <b>new thing</b> that happened suddenly.",
+        de:"Oft benutzt du beide Zeitformen zusammen: das <b>past progressive</b> für die Handlung, die <b>gerade lief</b> (den Hintergrund), und das <b>simple past</b> für das <b>neue Ereignis</b>, das plötzlich passierte." },
+  form:{ en:"<span class='c-A'>was / were</span> + <span class='c-V'>-ing</span> &nbsp;⚡&nbsp; <b>when</b> + simple past", de:"<span class='c-A'>was / were</span> + <span class='c-V'>-ing</span> &nbsp;⚡&nbsp; <b>when</b> + simple past" },
+  timeline:true,
+  rows:[
+    { k:"+", s:"[S Cerys] [A was] [V packing] her bag [C when] [S the phone] [V rang]." },
+    { k:"-", s:"[S Cerys] [A was] [N not] [V listening] [C when] [S the teacher] [V explained] the task." },
+    { k:"?", s:"[Q What] [A were] [S you] [V doing] [C when] [S the lights] [V went] out?" },
+    { k:"?", s:"[A Was] [S it] [V raining] [C when] [S you] [V left] the house?", short:"Yes, it was. / No, it wasn't." }
+  ],
+  move:{ en:"<b>when</b> + simple past = the new event ⚡<br><b>while</b> + past progressive = the background: <i>While we were packing, the puppy ran away.</i>",
+         de:"<b>when</b> + simple past = das neue Ereignis ⚡<br><b>while</b> (während) + past progressive = der Hintergrund: <i>While we were packing, the puppy ran away.</i>" },
+  signal:"when · while · suddenly",
+  watch:{ en:"Some verbs are almost never in the -ing form, e.g. <b>hear, know, like, want</b>: <i>I didn't hear the phone</i> (not: <s>I wasn't hearing</s>).",
+          de:"Manche Verben stehen fast nie in der -ing-Form, z. B. <b>hear, know, like, want</b>: <i>I didn't hear the phone</i> (nicht: <s>I wasn't hearing</s>)." },
+  ex1:[
+    { k:"+", q:"We were watching TV when the lights suddenly [[went|were going]] out.", a:"went" },
+    { k:"+", q:"While Dylan [[cooked|was cooking]], the {puppy|puppy} ate his sandwich.", a:"was cooking" },
+    { k:"-", q:"Cerys [[didn't hear|wasn't hearing]] the phone because she was wearing her {headphones|headphones}.", a:"didn't hear" },
+    { k:"-", q:"When Mum came home, we [[didn't do|weren't doing]] our homework – we were playing games!", a:"weren't doing" },
+    { k:"?", q:"[[Were you sleeping|Did you sleep]] when I called? – Yes, sorry, I was already in bed.", a:"Were you sleeping" },
+    { k:"?", q:"What happened while you [[travelled|were travelling]] to Cardiff?", a:"were travelling" }
+  ],
+  ex2:[
+    { k:"+", q:"Cerys ___ (take) a photo when a big wave ___ (hit) her.", a:[["was taking"],["hit"]] },
+    { k:"+", q:"While we ___ (pack) the car, the {puppy|puppy} ___ (run) away.", a:[["were packing"],["ran"]] },
+    { k:"-", q:"Dylan ___ (not / listen) when the {coach|coach} ___ (explain) the rules.", a:[["wasn't listening","was not listening"],["explained"]] },
+    { k:"-", q:"The kids ___ (not / sleep) when Nain ___ (open) the door.", a:[["weren't sleeping","were not sleeping"],["opened"]] },
+    { k:"?", q:"What ___ you ___ (do) when the lights ___ (go) out?", a:[["were"],["doing"],["went"]] },
+    { k:"?", q:"___ it ___ (rain) when you ___ (leave) the house?", a:[["Was"],["raining"],["left"]] }
+  ],
+  ex3:{ en:"Something surprising happened yesterday! Write a mini story with three sentences: one statement with <b>when</b> (+), one negative (–) and one question (?).",
+        de:"Gestern ist etwas Überraschendes passiert! Schreib eine Mini-Geschichte mit drei Sätzen: eine Aussage mit <b>when</b> (+), eine Verneinung (–) und eine Frage (?).",
+        model:["I was doing my homework when my friend called.","I wasn't listening to music, so I heard the phone.","What were you doing when the storm started?"],
+        check:["The background action is in the past progressive (was / were + -ing).","The new event is in the simple past.","I used when or while.","My sentences include +, – and ?."] }
+},
+{
+  id:"G3", tag:"R", title:"The simple past", de:"Die einfache Vergangenheit", page:"p. 194",
+  use:{ en:"Use the <b>simple past</b> for actions that happened and <b>finished in the past</b> – for example when you tell a story.",
+        de:"Das <b>simple past</b> verwendest du für Handlungen, die in der Vergangenheit passiert und <b>abgeschlossen</b> sind – zum Beispiel, wenn du eine Geschichte erzählst." },
+  form:{ en:"regular verbs: verb + <b>-ed</b> (play → played) · irregular verbs: own form (go → went)", de:"regelmäßige Verben: Verb + <b>-ed</b> (play → played) · unregelmäßige Verben: eigene Form (go → went), Liste S. 301–303" },
+  rows:[
+    { k:"+", s:"[S We] [V went] to Cardiff last week.", note:{ en:"No helping verb!", de:"Kein Hilfsverb!" } },
+    { k:"-", s:"[S We] [A did] [N not] [V go] to Cardiff last week.", alt:"[S We] [A did][N n't] [V go] to Cardiff last week." },
+    { k:"?", s:"[A Did] [S you] [V go] to Cardiff last week?", short:"Yes, we did. / No, we didn't." },
+    { k:"wh", s:"[Q Where] [A did] [S you] [V go] last week?" }
+  ],
+  move:{ en:"In negatives and questions you need the helping verb <span class='c-A'>did</span>. Then the main verb goes back to the <b>base form</b>: <span class='c-A'>did</span> + <span class='c-V'>go</span> (not <s>went</s>).<br><b>be</b> is different: no did! <i>I <span class='c-A'>was</span>n't at home. <span class='c-A'>Were</span> you in Cardiff?</i>",
+         de:"In Verneinungen und Fragen brauchst du das Hilfsverb <span class='c-A'>did</span>. Dann steht das Hauptverb wieder in der <b>Grundform</b>: <span class='c-A'>did</span> + <span class='c-V'>go</span> (nicht <s>went</s>), weil did die Vergangenheit schon zeigt.<br><b>be</b> ist anders: kein did! <i>I <span class='c-A'>was</span>n't at home. <span class='c-A'>Were</span> you in Cardiff?</i>" },
+  signal:"yesterday · last week / month / year · two days ago · in 2025",
+  watch:{ en:"<s>didn't went</s> → didn't <b>go</b> · <s>Did you saw?</s> → Did you <b>see</b>?",
+          de:"<s>didn't went</s> → didn't <b>go</b> · <s>Did you saw?</s> → Did you <b>see</b>? Das ist der häufigste Fehler!" },
+  ex1:[
+    { k:"+", q:"Last summer we [[travel|travelled]] to Scotland.", a:"travelled" },
+    { k:"+", q:"Dylan [[falled|fell]] {in love|fall in love} with a girl from Cardiff.", a:"fell" },
+    { k:"-", q:"Cerys [[didn't expect|didn't expected]] such a big {reaction|reaction}.", a:"didn't expect" },
+    { k:"-", q:"We [[didn't|weren't]] at home yesterday.", a:"weren't" },
+    { k:"?", q:"[[Did|Were]] you pack your {headphones|headphones}?", a:"Did" },
+    { k:"?", q:"Why [[did|were]] you so {embarrassed|embarrassed}?", a:"were" }
+  ],
+  ex2:[
+    { k:"+", q:"Yesterday Rhys ___ (give) me his old {headphones|headphones}.", a:[["gave"]] },
+    { k:"+", q:"Nain ___ (make) {pancakes|pancake} for us last Sunday.", a:[["made"]] },
+    { k:"-", q:"I ___ (not / understand) Mum's {note|note}.", a:[["didn't understand","did not understand"]] },
+    { k:"-", q:"The {match|match} ___ (not / be) very exciting.", a:[["wasn't","was not"]] },
+    { k:"?", q:"___ you ___ (go) to the {wedding|wedding} last weekend?", a:[["Did"],["go"]] },
+    { k:"?", q:"When ___ Cerys's family ___ (move) to Conwy?", a:[["did"],["move"]] }
+  ],
+  ex3:{ en:"Write about your last weekend: one statement (+), one negative (–) and one question (?) to a friend about their weekend.",
+        de:"Schreib über dein letztes Wochenende: eine Aussage (+), eine Verneinung (–) und eine Frage (?) an eine Freundin oder einen Freund über ihr Wochenende.",
+        model:["On Saturday I visited my grandma.","I didn't do my homework on Sunday.","What did you do on Saturday?"],
+        check:["I used the simple past (irregular verbs: list p. 301–303).","In the negative I used didn't + base form.","In the question I used did + base form."] }
+},
+{
+  id:"G4", tag:"R", title:"Simple past or present perfect?", de:"Einfache Vergangenheit oder Perfekt?", page:"p. 195",
+  use:{ en:"<b>Simple past:</b> the action is finished and you say <b>when</b> it happened (yesterday, last week, in 2025).<br><b>Present perfect:</b> it's important <b>now</b>, it has <b>just</b> happened, or it goes on until today – you don't say exactly when.",
+        de:"<b>Simple past:</b> Die Handlung ist abgeschlossen und du sagst, <b>wann</b> sie passiert ist (yesterday, last week, in 2025).<br><b>Present perfect:</b> Es ist <b>jetzt</b> wichtig, es ist <b>gerade eben</b> passiert oder es dauert bis heute an – du sagst nicht genau, wann." },
+  form:{ en:"present perfect: <span class='c-A'>have / has</span> + <span class='c-V'>3rd form</span> (past participle): packed, been, seen", de:"present perfect: <span class='c-A'>have / has</span> + <span class='c-V'>3. Form</span> (Partizip Perfekt): packed, been, seen" },
+  rows:[
+    { k:"+", s:"[S Cerys] [A has] [V packed] her bag. <i>(She's ready now.)</i>" },
+    { k:"-", s:"[S Cerys] [A has] [N not] [V packed] her bag yet.", alt:"[S Cerys] [A has][N n't] [V packed] her bag yet." },
+    { k:"?", s:"[A Has] [S Cerys] [V packed] her bag yet?", short:"Yes, she has. / No, she hasn't." },
+    { k:"wh", s:"[Q What] [A have] [S you] [V done]?" },
+    { k:"past", s:"Compare: [S Cerys] [V packed] her bag <u>yesterday</u>. <i>(simple past – we say when)</i>" }
+  ],
+  move:{ en:"<b>Negative:</b> <span class='c-N'>not</span> comes after have / has.<br><b>Question:</b> have / has <b>jumps to the front</b>.<br>Words like <b>already, just, never</b> go between have / has and the 3rd form. <b>yet</b> goes at the end.",
+         de:"<b>Verneinung:</b> <span class='c-N'>not</span> steht hinter have / has.<br><b>Frage:</b> have / has <b>springt nach vorne</b>.<br>Wörter wie <b>already, just, never</b> stehen zwischen have / has und der 3. Form. <b>yet</b> steht am Satzende." },
+  signal:"simple past: yesterday · last … · … ago · in 2025 &nbsp;|&nbsp; present perfect: already · just · ever · never · not … yet · since",
+  watch:{ en:"German „Ich habe gestern gepackt“ → English: I <b>packed</b> my bag yesterday. (not: <s>I have packed yesterday</s>)",
+          de:"Deutsch „Ich habe gestern gepackt“ → Englisch: I <b>packed</b> my bag yesterday. (nicht: <s>I have packed yesterday</s>) – mit einer Zeitangabe aus der Vergangenheit steht im Englischen immer das simple past!" },
+  ex1:[
+    { k:"+", q:"Cerys [[has visited|visited]] Cardiff last month.", a:"visited" },
+    { k:"+", q:"Look! Dylan [[broke|has broken]] the window!", a:"has broken" },
+    { k:"-", q:"I [[haven't seen|didn't see]] Rhys since Monday.", a:"haven't seen" },
+    { k:"-", q:"We [[haven't gone|didn't go]] to the {match|match} last Saturday.", a:"didn't go" },
+    { k:"?", q:"[[Have you finished|Did you finish]] your homework yesterday?", a:"Did you finish" },
+    { k:"?", q:"How long [[did you know|have you known]] Rhys? – Since primary school.", a:"have you known" }
+  ],
+  ex2:[
+    { k:"+", q:"I ___ just ___ (finish) my homework. Can I go out now?", a:[["have","'ve"],["finished"]] },
+    { k:"+", q:"Last year Dylan ___ (win) a prize for his photo.", a:[["won"]] },
+    { k:"-", q:"Cerys ___ (not / pack) her bag yet.", a:[["hasn't packed","has not packed"]] },
+    { k:"-", q:"We ___ (not / watch) the {match|match} last night.", a:[["didn't watch","did not watch"]] },
+    { k:"?", q:"___ you ever ___ (be) to Wales?", a:[["Have"],["been"]] },
+    { k:"?", q:"When ___ you ___ (get) your {puppy|puppy}?", a:[["did"],["get"]] }
+  ],
+  ex3:{ en:"Write a short message to a friend: one sentence about something you <b>have already done</b> today (+), one negative with <b>not … yet</b> (–), and one question about <b>last weekend</b> (?).",
+        de:"Schreib eine kurze Nachricht an eine Freundin oder einen Freund: einen Satz über etwas, das du heute <b>schon gemacht hast</b> (+), eine Verneinung mit <b>not … yet</b> (–) und eine Frage zum <b>letzten Wochenende</b> (?).",
+        model:["I have already finished my English homework.","I haven't packed my sports bag yet.","Did you go to the cinema last weekend?"],
+        check:["With already / just / not … yet I used the present perfect (have / has + 3rd form).","With last weekend I used the simple past.","In the question, have / has or did is at the front."] }
+},
+{
+  id:"G5", tag:"R", title:"Linking sentences: connectives", de:"Verbindung von Sätzen", page:"p. 195",
+  use:{ en:"<b>Connectives</b> are words that link two sentences. They make your texts sound better and show how ideas belong together.",
+        de:"<b>Connectives</b> sind Wörter, mit denen du zwei Sätze verbindest. Deine Texte klingen damit besser, und man sieht, wie die Gedanken zusammenhängen." },
+  form:{ en:"sentence 1 + <span class='c-C'>connective</span> + sentence 2 (subject – verb – object)", de:"Satz 1 + <span class='c-C'>Verbindungswort</span> + Satz 2 (Subjekt – Verb – Objekt)" },
+  conn:[["and","und"],["but","aber"],["because","weil"],["so","also, deshalb"],["when","als, wenn"],["while","während"],["although","obwohl"]],
+  rows:[
+    { k:"+", s:"[S Cerys] [V was] happy [C because] [S she] [V had] a new {puppy|puppy}." },
+    { k:"-", s:"[S Dylan] [A did][N n't] [V go] out [C because] [S he] [A was] [N not] [V feeling] well." },
+    { k:"?", s:"[A Did] [S you] [V stay] at home [C because] [S it] [A was] [V raining]?" }
+  ],
+  move:{ en:"After the connective, the second sentence has the <b>normal word order</b>: subject – verb – object. Nothing moves to the end!",
+         de:"Nach dem Verbindungswort hat der zweite Satz die <b>normale Satzstellung</b>: Subjekt – Verb – Objekt. Anders als im Deutschen wandert das Verb nicht ans Ende!" },
+  signal:"",
+  watch:{ en:"German: … weil er krank <b>ist</b>. English: … because he <b>is</b> ill. (not: <s>because he ill is</s>)",
+          de:"Deutsch: … weil er krank <b>ist</b> (Verb am Ende). Englisch: … because he <b>is</b> ill (nicht: <s>because he ill is</s>)." },
+  ex1:[
+    { k:"+", q:"I like Conwy, [[because|but]] I miss my old friends.", a:"but" },
+    { k:"+", q:"It was raining, [[so|because]] we stayed at home.", a:"so" },
+    { k:"-", q:"Rhys didn't come to the party [[although|because]] he was ill.", a:"because" },
+    { k:"-", q:"[[Because|Although]] Cerys was tired, she didn't go to bed.", a:"Although" },
+    { k:"?", q:"Did you {turn on|turn on} the radio [[so|while]] you were cooking?", a:"while" },
+    { k:"?", q:"Why were you so {embarrassed|embarrassed} [[when|so]] the teacher read your {note|note}?", a:"when" }
+  ],
+  ex2:[
+    { k:"+", q:"Cerys was happy because she ___ (get) a {puppy|puppy} for her birthday.", a:[["got"]] },
+    { k:"+", q:"We stayed at home, so we ___ (watch) a film.", a:[["watched"]] },
+    { k:"-", q:"Dylan was tired, but he ___ (not / want) to go to bed.", a:[["didn't want","did not want"]] },
+    { k:"-", q:"{Although|although} it was cold, Nain ___ (not / take) her coat.", a:[["didn't take","did not take"]] },
+    { k:"?", q:"Did you call me when I ___ (have) a shower?", a:[["was having"]] },
+    { k:"?", q:"Why ___ you ___ (leave) so early? – Because I felt sick.", a:[["did"],["leave"]] }
+  ],
+  ex3:{ en:"Write three sentences about your week with three different connectives: one statement with <b>because</b> or <b>so</b> (+), one negative with <b>but</b> or <b>although</b> (–) and one question with <b>when</b> or <b>while</b> (?).",
+        de:"Schreib drei Sätze über deine Woche mit drei verschiedenen Verbindungswörtern: eine Aussage mit <b>because</b> oder <b>so</b> (+), eine Verneinung mit <b>but</b> oder <b>although</b> (–) und eine Frage mit <b>when</b> oder <b>while</b> (?).",
+        model:["I was tired on Monday because I went to bed late.","I like football, but I didn't play this week.","What were you doing when I called you?"],
+        check:["I used three different connectives.","After the connective, the word order is subject – verb – object.","My sentences include +, – and ?."] }
+}
+];
+
+// ===== THEME 1 VOCABULARY (bold words, Camden Town 7 TB pp. 221–225) =====
+// [section, English, German, gap sentence (___), accepted gap answers, German sentence ([[target]]), model translation, accepted target forms]
+const VOCAB_ROWS = [
+// ---- 1 ----
+["1","to be on the move","unterwegs sein, sich im Umbruch befinden","My family is always ___ – we never stay in one town for long.",["on the move"],"Wir sind [[ständig unterwegs]].","We are always on the move.",["on the move"]],
+["1","advice","Rat(schlag), Ratschläge","Can you give me some ___? I don't know what to do.",["advice"],"Ich brauche deinen [[Rat]].","I need your advice.",["advice"]],
+["1","magazine","Zeitschrift, Magazin","Cerys is reading a ___ about horses.",["magazine"],"Dylan liest eine [[Zeitschrift]] über Fußball.","Dylan is reading a magazine about football.",["magazine"]],
+["1","desperate","verzweifelt","Nobody can help me with my homework. I'm ___!",["desperate"],"Er war [[verzweifelt]], weil er seinen Hund nicht finden konnte.","He was desperate because he couldn't find his dog.",["desperate"]],
+["1","to make sth (e.g. the team)","etw schaffen; in etw reinkommen","If you train hard, you will ___.",["make the team"],"Ich habe es [[in die Mannschaft geschafft]]!","I made the team!",["made the team","make the team"]],
+["1","might","könnte, vielleicht","Take an umbrella. It ___ rain later.",["might"],"Es [[könnte]] morgen schneien.","It might snow tomorrow.",["might"]],
+["1","coach","Trainer/in, Coach","Our football ___ is very strict.",["coach"],"Unsere [[Trainerin]] ist sehr nett.","Our coach is very nice.",["coach"]],
+["1","Good luck!","Viel Glück!","You have a test tomorrow? ___!",["Good luck"],"[[Viel Glück]] bei deinem Spiel!","Good luck in your match!",["good luck"]],
+["1","to argue (about)","sich streiten (wegen)","My brother and I often ___ about the TV.",["argue"],"Wir [[streiten]] uns oft über Hausaufgaben.","We often argue about homework.",["argue","argued","arguing","argues"]],
+["1","all the time","die ganze Zeit","Dylan is on his phone ___.",["all the time"],"Sie redet [[die ganze Zeit]].","She talks all the time.",["all the time"]],
+["1","stuff","Zeug, Sachen","There's too much ___ on my desk.",["stuff"],"Räum dein [[Zeug]] weg!","Put your stuff away!",["stuff"]],
+["1","Yours","Mit freundlichen Grüßen, Viele Grüße","Thank you for your help. ___, Cerys",["Yours"],"[[Viele Grüße]], Dylan","Yours, Dylan",["yours"]],
+["1","normal","normal, üblich","It's ___ to feel nervous before a test.",["normal"],"Es ist [[normal]], manchmal traurig zu sein.","It's normal to be sad sometimes.",["normal"]],
+["1","obviously","offensichtlich, deutlich","He ___ didn't do his homework – the page is empty.",["obviously"],"Sie war [[offensichtlich]] müde.","She was obviously tired.",["obviously"]],
+["1","on the one hand","einerseits, auf der einen Seite","___, I want to go to the party. On the other hand, I'm really tired.",["On the one hand"],"[[Einerseits]] mag ich London.","On the one hand, I like London.",["on the one hand"]],
+["1","on the other hand","andererseits, auf der anderen Seite","On the one hand, I want to go to the party. ___, I'm really tired.",["On the other hand"],"[[Andererseits]] vermisse ich meine Freunde.","On the other hand, I miss my friends.",["on the other hand"]],
+["1","to organize","organisieren","Let's ___ a party for Nain's birthday.",["organize","organise"],"Wir [[organisieren]] ein Fest für die Klasse.","We are organizing a party for the class.",["organize","organizing","organized","organise","organising","organised"]],
+["1","to get married","heiraten","My cousin and her boyfriend are ___ in May.",["getting married"],"Meine Tante [[hat]] letztes Jahr [[geheiratet]].","My aunt got married last year.",["got married","get married","getting married"]],
+["1","to get divorced","geschieden werden, sich scheiden lassen","Her parents ___ last year. Now her dad lives in Cardiff.",["got divorced"],"Seine Eltern [[haben sich scheiden lassen]].","His parents got divorced.",["divorced"]],
+["1","to marry","heiraten","Will you ___ me?",["marry"],"Er möchte sie [[heiraten]].","He wants to marry her.",["marry","married"]],
+["1","embarrassed","verlegen, peinlich berührt","I forgot my friend's birthday. I'm so ___.",["embarrassed"],"Mir war das so [[peinlich]].","I was so embarrassed.",["embarrassed"]],
+["1","although","obwohl","___ it was raining, we went for a walk.",["Although"],"[[Obwohl]] ich müde war, habe ich weitergelesen.","Although I was tired, I kept reading.",["although"]],
+["1","to fall in love (with sb)","sich (in jdn) verlieben","Dylan has ___ with a girl from his class.",["fallen in love"],"Sie [[hat sich in]] einen Jungen aus Cardiff [[verliebt]].","She fell in love with a boy from Cardiff.",["fell in love","fallen in love","fall in love"]],
+["1","to die (of)","sterben (an)","The old king ___ of a broken heart.",["died"],"Unsere Katze [[ist]] letztes Jahr [[gestorben]].","Our cat died last year.",["died","die"]],
+["1","heart","Herz","My ___ was beating very fast.",["heart"],"Sie hat ein gutes [[Herz]].","She has a good heart.",["heart"]],
+["1","difference","Unterschied","What's the ___ between a town and a city?",["difference"],"Ich sehe keinen [[Unterschied]].","I can't see a difference.",["difference"]],
+["1","nobody","niemand, keiner","___ came to the meeting. The room was empty.",["Nobody"],"[[Niemand]] hat mir geholfen.","Nobody helped me.",["nobody"]],
+// ---- 2 ----
+["2","helpful","hilfsbereit, hilfreich, nützlich","Your advice was very ___. Thanks!",["helpful"],"Der Verkäufer war sehr [[hilfsbereit]].","The shop assistant was very helpful.",["helpful"]],
+["2","useful","nützlich, praktisch","A map is very ___ when you are in a new town.",["useful"],"Diese App ist sehr [[nützlich]].","This app is very useful.",["useful"]],
+["2","unrealistic","unrealistisch","Sorry, but your plan sounds very ___.",["unrealistic"],"Das ist ein [[unrealistisches]] Ziel.","That is an unrealistic goal.",["unrealistic"]],
+// ---- 3 ----
+["3","to scan (for)","absuchen (nach), überfliegen","___ the text for the names of the towns.",["Scan"],"[[Überflieg]] den Text nach Zahlen.","Scan the text for numbers.",["scan"]],
+// ---- 5 ----
+["5","to make up","erfinden, (sich) ausdenken","Let's ___ a story about a dragon.",["make up"],"Er hat die ganze Geschichte [[erfunden]].","He made up the whole story.",["made up","make up","made the whole story up","made it up"]],
+["5","out of","aus","Look ___ the window – it's snowing!",["out of"],"Sie nahm ein Buch [[aus]] ihrer Tasche.","She took a book out of her bag.",["out of"]],
+// ---- A1 ----
+["A1","reaction (to)","Reaktion (auf)","What was her ___ to the news?",["reaction"],"Seine [[Reaktion]] war lustig.","His reaction was funny.",["reaction"]],
+// ---- A2 ----
+["A2","which","welche(r, s)","___ subject do you like best?",["Which"],"[[Welches]] Buch liest du?","Which book are you reading?",["which"]],
+["A2","while","während, als","___ Dylan was cooking, the puppy ate his sandwich.",["While"],"[[Während]] ich las, schlief der Hund.","While I was reading, the dog was sleeping.",["while"]],
+["A2","rather","ziemlich, recht","Cerys didn't sleep much. She's feeling ___ tired.",["rather"],"Der Film war [[ziemlich]] langweilig.","The film was rather boring.",["rather"]],
+["A2","wedding","Hochzeit","My aunt's ___ was on Saturday.",["wedding"],"Die [[Hochzeit]] war wunderschön.","The wedding was beautiful.",["wedding"]],
+["A2","pancake","Pfannkuchen","Nain makes the best ___ in Wales.",["pancakes"],"Ich esse gern [[Pfannkuchen]] mit Ahornsirup.","I like eating pancakes with maple syrup.",["pancake","pancakes"]],
+["A2","to turn on","einschalten, aufdrehen, anmachen","Can you ___ the light, please? It's so dark in here.",["turn on"],"[[Mach]] bitte den Fernseher [[an]].","Please turn on the TV.",["turn on","turn the tv on","turn it on"]],
+["A2","to sing along","mitsingen","I turned on the radio and started ___.",["singing along","to sing along"],"Alle haben [[mitgesungen]].","Everybody sang along.",["sang along","sing along","singing along"]],
+["A2","however","jedoch, aber","I don't like winter. ___, I love Christmas.",["However"],"Es war kalt. [[Jedoch]] hatten wir viel Spaß.","It was cold. However, we had a lot of fun.",["however"]],
+["A2","smile","Lächeln","She has a lovely ___.",["smile"],"Er begrüßte uns mit einem [[Lächeln]].","He greeted us with a smile.",["smile"]],
+["A2","quite","ziemlich, ganz","I don't ___ understand what you mean.",["quite"],"Das Wasser war [[ziemlich]] kalt.","The water was quite cold.",["quite"]],
+["A2","town","Stadt","Conwy is a small ___ in North Wales.",["town"],"Meine [[Stadt]] hat einen schönen Park.","My town has a nice park.",["town"]],
+["A2","to slam the door shut","die Tür zuschlagen","Dylan was very angry. He went to his room and ___.",["slammed the door shut"],"Sie [[schlug die Tür zu]].","She slammed the door shut.",["slammed the door shut","slam the door shut","slams the door shut"]],
+["A2","coffee","Kaffee","Mum drinks a cup of ___ every morning.",["coffee"],"Mein Vater trinkt keinen [[Kaffee]].","My father doesn't drink coffee.",["coffee"]],
+["A2","to take a deep breath","tief Luft holen","Calm down and ___. You can do it!",["take a deep breath"],"[[Hol tief Luft]] und fang an!","Take a deep breath and start!",["deep breath"]],
+["A2","to hug","umarmen","When Cerys saw her friend again, she ___ her.",["hugged"],"Meine Oma [[umarmt]] mich immer.","My grandma always hugs me.",["hug","hugs","hugged","hugging"]],
+["A2","kind","Art, Sorte","What ___ of music do you like?",["kind"],"Welche [[Art]] von Filmen magst du?","What kind of films do you like?",["kind"]],
+["A2","to expect","erwarten, (mit etw) rechnen","The test was easier than I ___.",["expected"],"Ich habe keinen Regen [[erwartet]].","I didn't expect rain.",["expect","expected"]],
+["A2","such","solch(er, es)","It was ___ a fun evening!",["such"],"Er ist [[so ein]] netter Junge.","He is such a nice boy.",["such"]],
+["A2","completely","völlig","I ___ forgot about the test.",["completely"],"Das Zimmer war [[völlig]] leer.","The room was completely empty.",["completely"]],
+["A2","helpless","hilflos, machtlos","I didn't know what to do. I felt ___.",["helpless"],"Das Baby ist noch [[hilflos]].","The baby is still helpless.",["helpless"]],
+["A2","to move","(sich) bewegen; (um)ziehen","We are ___ to a new house next month.",["moving"],"Wir [[sind]] letztes Jahr nach Conwy [[gezogen]].","We moved to Conwy last year.",["moved","move","moving"]],
+["A2","to turn away","sich abwenden, wegdrücken","I tried to talk to him, but he ___ away.",["turned"],"Sie [[wandte sich ab]] und ging.","She turned away and left.",["turned away","turn away"]],
+["A2","still","(immer) noch, noch immer","I ___ don't understand. Can you explain it again?",["still"],"Er schläft [[immer noch]].","He is still sleeping.",["still"]],
+["A2","even if","selbst wenn","I'm kind to others ___ I don't like them.",["even if"],"Ich gehe raus, [[selbst wenn]] es regnet.","I'm going out even if it rains.",["even if"]],
+["A2","country","Land","Wales is a small ___ with lots of castles.",["country"],"Deutschland ist ein großes [[Land]].","Germany is a big country.",["country"]],
+["A2","UK (= the United Kingdom)","Vereinigtes Königreich","England, Scotland, Wales and Northern Ireland are the four countries of the ___.",["UK","United Kingdom"],"Cardiff liegt im [[Vereinigten Königreich]].","Cardiff is in the UK.",["uk","united kingdom"]],
+["A2","England","England","London is the capital of ___.",["England"],"Meine Tante wohnt in [[England]].","My aunt lives in England.",["england"]],
+["A2","Scotland","Schottland","Edinburgh is the capital of ___.",["Scotland"],"Wir fahren im Sommer nach [[Schottland]].","We are going to Scotland in the summer.",["scotland"]],
+["A2","Northern Ireland","Nordirland","Belfast is the capital of ___.",["Northern Ireland"],"Warst du schon einmal in [[Nordirland]]?","Have you ever been to Northern Ireland?",["northern ireland"]],
+["A2","capital (city)","Hauptstadt","Cardiff is the ___ of Wales.",["capital","capital city"],"Berlin ist die [[Hauptstadt]] von Deutschland.","Berlin is the capital of Germany.",["capital"]],
+["A2","the other one","der/die/das andere","I've got two brothers. One is twelve, ___ is eight.",["the other one"],"Ich mag das rote T-Shirt, nicht [[das andere]].","I like the red T-shirt, not the other one.",["the other one"]],
+["A2","note","Notiz, Mitteilung","Mum wrote a ___ for Dylan before she went to work.",["note"],"Ich habe dir eine [[Notiz]] auf den Tisch gelegt.","I put a note on the table for you.",["note"]],
+// ---- A4 ----
+["A4","action","Handeln, Handlung, Tat","What do you think of her ___? Was it the right thing to do?",["action","actions"],"Seine [[Tat]] war sehr mutig.","His action was very brave.",["action"]],
+// ---- A5 ----
+["A5","to travel","reisen","We love to ___ by train.",["travel"],"Wir [[reisen]] gern mit dem Bus.","We like to travel by bus.",["travel"]],
+["A5","to drive, drove, driven","fahren","Dad ___ us to school yesterday.",["drove"],"Meine Mutter [[fährt]] mich zum Training.","My mum drives me to training.",["drive","drives","drove","driven","driving"]],
+// ---- A6 ----
+["A6","to pack","(ein)packen","Don't forget to ___ your swimming things.",["pack"],"Ich muss noch meine Tasche [[packen]].","I still have to pack my bag.",["pack"]],
+// ---- A7 ----
+["A7","simple","einfach","This task is very ___. Everybody can do it.",["simple"],"Die Antwort ist ganz [[einfach]].","The answer is very simple.",["simple"]],
+["A7","to feel like doing sth","Lust haben, etw zu tun","It's raining. I don't ___ going out today.",["feel like"],"Ich [[habe Lust]], ins Kino zu gehen.","I feel like going to the cinema.",["feel like"]],
+["A7","to break down","stehen bleiben, versagen, zusammenbrechen","Our car ___ on the way to Cardiff, so we were late.",["broke down"],"Als sie die Nachricht hörte, [[brach]] sie [[zusammen]].","When she heard the news, she broke down.",["broke down","break down","broken down"]],
+["A7","to belong","(dazu)gehören","Cerys is new, but she already feels that she ___.",["belongs"],"Ich will, dass du dich hier [[zugehörig fühlst]].","I want you to feel that you belong here.",["belong","belongs"]],
+["A7","lost","verlaufen, verloren","I can't find my way home. I'm ___!",["lost"],"Wir hatten uns in der Stadt [[verlaufen]].","We were lost in the town.",["lost"]],
+["A7","powerful","mächtig, stark, druckvoll","In the past, kings were very ___.",["powerful"],"Das ist ein sehr [[starkes]] Lied.","That is a very powerful song.",["powerful"]],
+["A7","dramatic","dramatisch","They both died at the end. It was very ___.",["dramatic"],"Das Ende des Films war [[dramatisch]].","The end of the film was dramatic.",["dramatic"]],
+["A7","to illustrate","illustrieren","This song really ___ how I feel.",["illustrates"],"Die Bilder [[illustrieren]] die Geschichte.","The pictures illustrate the story.",["illustrate","illustrates"]],
+// ---- A9 ----
+["A9","optimistic","optimistisch","I'm ___ that the weather will be better tomorrow.",["optimistic"],"Sie ist immer [[optimistisch]].","She is always optimistic.",["optimistic"]],
+["A9","mood","Laune, Stimmung","My sister is in a bad ___ today.",["mood"],"Er hat heute gute [[Laune]].","He is in a good mood today.",["mood"]],
+["A9","patient","geduldig","Please be ___. Dinner is almost ready.",["patient"],"Unsere Lehrerin ist sehr [[geduldig]].","Our teacher is very patient.",["patient"]],
+["A9","empty","leer","There was nobody in the classroom. It was completely ___.",["empty"],"Der Kühlschrank ist [[leer]].","The fridge is empty.",["empty"]],
+["A9","goodbye","Abschied(s-)","Let's organize a ___ party for Rhys.",["goodbye"],"Der [[Abschied]] war sehr traurig.","The goodbye was very sad.",["goodbye"]],
+["A9","to be missing","fehlen","When did you notice that the money ___?",["was missing"],"Mein Handy [[fehlt]]!","My phone is missing!",["missing"]],
+["A9","flat","(Etagen)Wohnung, Mietwohnung","Do you live in a house or in a ___?",["flat"],"Wir wohnen in einer kleinen [[Wohnung]].","We live in a small flat.",["flat"]],
+["A9","to persuade","überreden, überzeugen","Rhys ___ his mum that he was old enough to watch the film.",["persuaded"],"Ich habe meinen Vater [[überredet]], mitzukommen.","I persuaded my dad to come with us.",["persuade","persuaded"]],
+["A9","change","(Ver)Änderung, Wechsel, Umstellung","Moving to a new town is a big ___.",["change"],"Wir brauchen eine [[Veränderung]].","We need a change.",["change"]],
+// ---- A10 ----
+["A10","point of view","Ansicht, Einstellung, Sicht","Try to see things from her ___.",["point of view"],"Erzähl die Geschichte aus Dylans [[Sicht]].","Tell the story from Dylan's point of view.",["point of view"]],
+["A10","another","noch eine(r, s), ein(e) andere(r)","I've finished my apple. Can I have ___, please?",["another"],"Kann ich [[noch ein]] Stück Kuchen haben?","Can I have another piece of cake?",["another"]],
+["A10","to go together","zusammengehören, passen","The parts of your story ___ really well.",["go together"],"Diese Farben [[passen]] gut [[zusammen]].","These colours go together well.",["go together","goes together","went together"]],
+// ---- B1 ----
+["B1","asap / ASAP (= as soon as possible)","so schnell wie möglich","Please call me ___ – it's important!",["asap","ASAP","as soon as possible"],"Komm [[so schnell wie möglich]] nach Hause!","Come home as soon as possible!",["asap","as soon as possible"]],
+["B1","conversation","Gespräch, Unterhaltung","We had a long ___ on the phone.",["conversation"],"Das [[Gespräch]] mit meiner Lehrerin war gut.","The conversation with my teacher was good.",["conversation"]],
+// ---- B2 ----
+["B2","top","oberes Ende, Spitze; beste(r, s)","What are your ___ three ideas?",["top"],"Das sind meine [[besten]] drei Lieder.","These are my top three songs.",["top"]],
+["B2","choice","(Aus)Wahl","You can have an apple or a banana. It's your ___.",["choice"],"Das war eine gute [[Wahl]].","That was a good choice.",["choice"]],
+// ---- B3 ----
+["B3","to chat","plaudern, chatten","The girls ___ for hours last night.",["chatted"],"Wir [[chatten]] jeden Abend.","We chat every evening.",["chat","chatted","chatting"]],
+["B3","I see what you mean.","Ich weiß, was du meinst.","“___. That's a good point.”",["I see what you mean"],"[[Ich weiß, was du meinst.]]","I see what you mean.",["i see what you mean"]],
+["B3","headphones","Kopfhörer","You can listen to music with your ___.",["headphones"],"Wo sind meine [[Kopfhörer]]?","Where are my headphones?",["headphones"]],
+["B3","so","also, deshalb; damit","I'm going to Rhys's house ___ we can do our homework together.",["so"],"Es regnete, [[deshalb]] blieben wir zu Hause.","It was raining, so we stayed at home.",["so"]],
+["B3","not even","noch nicht einmal","I don't see my old friends much – ___ at the weekend.",["not even"],"Er hat [[nicht einmal]] Danke gesagt.","He didn't even say thank you.",["not even","didn't even","did not even"]],
+// ---- B5 ----
+["B5","experience","Erfahrung, Erlebnis","Tell us about your ___ in London!",["experience"],"Das war ein tolles [[Erlebnis]].","That was a great experience.",["experience"]],
+["B5","following","folgende(r, s)","The ___ words are adjectives: nice, bad, loud.",["following"],"Beantworte die [[folgenden]] Fragen.","Answer the following questions.",["following"]],
+["B5","to give up, gave up, given up","aufgeben, resignieren","Don't ___ – you're almost there!",["give up"],"Sie hat nie [[aufgegeben]].","She never gave up.",["gave up","give up","given up"]],
+["B5","to get together","sich treffen; wieder zusammenkommen","Let's ___ after school and do our homework.",["get together"],"Wir [[treffen uns]] am Samstag.","We are getting together on Saturday.",["get together","getting together","got together"]],
+// ---- B8 ----
+["B8","moment","Moment, Augenblick","Now is the perfect ___ to tell her.",["moment"],"Warte einen [[Moment]]!","Wait a moment!",["moment"]],
+["B8","fight","Kampf; hier: Streit","My mother and I had a horrible ___.",["fight"],"Nach dem [[Streit]] haben wir nicht mehr geredet.","After the fight we didn't talk any more.",["fight"]],
+["B8","as","weil, da","I didn't go swimming ___ I don't like getting wet.",["as"],"Ich blieb zu Hause, [[da]] ich krank war.","I stayed at home as I was ill.",["as"]],
+["B8","over","hinüber, herüber, drüben","Do you want to come ___ to my house?",["over"],"Komm doch mal [[rüber]]!","Come over!",["over"]],
+["B8","brave","tapfer, mutig","You weren't scared at all. You were so ___!",["brave"],"Der kleine Junge war sehr [[mutig]].","The little boy was very brave.",["brave"]],
+["B8","latest","jüngste(r, s), letzte(r, s), neueste(r, s)","Have you heard the ___ news?",["latest"],"Hast du das [[neueste]] Lied von ihr gehört?","Have you heard her latest song?",["latest"]],
+["B8","match","Spiel, Partie","We went to see a rugby ___ in Cardiff.",["match"],"Das [[Spiel]] war sehr spannend.","The match was very exciting.",["match"]],
+["B8","costume","Kostüm","Everybody was wearing a ___ at the party.",["costume"],"Mein [[Kostüm]] ist ein Drache.","My costume is a dragon.",["costume"]],
+["B8","to make sb do sth","jdn zu etw bringen, jdn etw tun lassen","Please don't ___ go to school today, Mum!",["make me"],"Meine Eltern [[lassen]] mich jeden Tag Klavier [[üben]].","My parents make me practise the piano every day.",["make me","makes me","made me"]],
+["B8","uncomfortable","unbequem, unbehaglich","These shoes are too small. They're really ___.",["uncomfortable"],"Der Stuhl ist sehr [[unbequem]].","The chair is very uncomfortable.",["uncomfortable"]],
+["B8","polite","höflich","He always says “please” and “thank you”. He is very ___.",["polite"],"Sei bitte [[höflich]]!","Please be polite!",["polite"]],
+["B8","to take off, took off, taken off","abnehmen, ausziehen, abziehen","It's so warm in here. I have to ___ my jumper.",["take off"],"[[Zieh]] deine Schuhe [[aus]]!","Take off your shoes!",["take off","take your shoes off","took off","taken off"]],
+["B8","to go through, went through, gone through","durchgehen","Let's ___ the shopping list before we go.",["go through"],"Wir [[gehen]] die Hausaufgaben zusammen [[durch]].","We are going through the homework together.",["go through","going through","went through","gone through","goes through"]],
+// ---- B9 ----
+["B9","directly","direkt, genau, sofort","Remember to come home ___ after school!",["directly"],"Geh [[direkt]] nach Hause!","Go home directly!",["directly"]],
+["B9","particular","bestimmt, besondere(r, s), speziell","Max likes this ___ photo. It's his favourite.",["particular"],"Suchst du ein [[bestimmtes]] Buch?","Are you looking for a particular book?",["particular"]],
+// ---- B10 ----
+["B10","to comment (on)","kommentieren","Please ___ on my photo!",["comment"],"Viele Leute haben mein Foto [[kommentiert]].","Lots of people commented on my photo.",["comment","commented"]],
+["B10","to have sth in common (with sb)","etw (mit jdm) gemeinsam haben","We both love rugby. We have a lot ___.",["in common"],"Wir [[haben]] viel [[gemeinsam]].","We have a lot in common.",["in common"]],
+["B10","draft","Entwurf","Write a first ___ of your comment.",["draft"],"Das ist nur ein [[Entwurf]].","This is only a draft.",["draft"]],
+["B10","spelling","Rechtschreibung","The ___ of Welsh names can be very difficult.",["spelling"],"Achte auf deine [[Rechtschreibung]]!","Check your spelling!",["spelling"]]
+];
+const VOCAB = VOCAB_ROWS.map((r,i) => ({ id:i, sec:r[0], en:r[1], de:r[2], gap:r[3], ga:r[4], tde:r[5], ten:r[6], tchk:r[7] }));
+const SECTIONS = [...new Set(VOCAB.map(v => v.sec))];
+
+// irregular verbs marked (irr) in the Theme 1 word list (bold entries) – forms from TB pp. 301–303
+const IRREG = [
+  ["be on the move","was / were on the move","been on the move","unterwegs sein"],
+  ["make (the team)","made","made","(es in etw) schaffen"],
+  ["get married","got married","got / gotten married","heiraten"],
+  ["get divorced","got divorced","got / gotten divorced","sich scheiden lassen"],
+  ["fall in love","fell in love","fallen in love","sich verlieben"],
+  ["make up","made up","made up","erfinden, (sich) ausdenken"],
+  ["sing along","sang along","sung along","mitsingen"],
+  ["take a deep breath","took a deep breath","taken a deep breath","tief Luft holen"],
+  ["drive","drove","driven","fahren"],
+  ["feel like (doing sth)","felt like","felt like","Lust haben (etw zu tun)"],
+  ["break down","broke down","broken down","zusammenbrechen, stehen bleiben"],
+  ["be missing","was / were missing","been missing","fehlen"],
+  ["go together","went together","gone together","zusammenpassen"],
+  ["give up","gave up","given up","aufgeben"],
+  ["get together","got together","got / gotten together","sich treffen"],
+  ["make sb do sth","made sb do sth","made sb do sth","jdn zu etw bringen"],
+  ["take off","took off","taken off","ausziehen, abnehmen"],
+  ["go through","went through","gone through","durchgehen"],
+  ["have sth in common","had sth in common","had sth in common","etw gemeinsam haben"]
+].map((r,i) => ({ id:i, inf:r[0], past:r[1], pp:r[2], de:r[3] }));
+
+// ===== SAY IT IN ENGLISH (TB p. 226) – dialogues; {{phrase}} = gap, x = extra phrase that does not fit =====
+const DIALOGUES = [
+{ t:"Big news!", f:"reacting · suggesting something", x:"I am so unhappy!", l:[
+ ["Rhys","Hey Cerys! {{You won't believe what I've just heard!}}","Hey Cerys! Du wirst nicht glauben, was ich gerade gehört habe!"],
+ ["Cerys","What is it? Tell me!","Was denn? Erzähl!"],
+ ["Rhys","Dylan made the rugby team! Let's organize a little party for him.","Dylan hat es in die Rugbymannschaft geschafft! Lass uns eine kleine Party für ihn organisieren."],
+ ["Cerys","{{Great idea!}} We could make pancakes – he loves them.","Tolle Idee! Wir könnten Pfannkuchen machen – die liebt er."],
+ ["Rhys","{{Sounds OK.}} {{Or maybe put together a playlist?}}","Klingt okay. Oder vielleicht eine Playlist zusammenstellen?"],
+ ["Cerys","Perfect! Then we can all sing along.","Perfekt! Dann können wir alle mitsingen."]]},
+{ t:"Please help me!", f:"asking for advice · giving advice", x:"You were so brave.", l:[
+ ["Dylan","Nain? {{Please help me, I'm desperate.}}","Nain? Bitte hilf mir, ich bin verzweifelt."],
+ ["Nain","Oh dear, what's wrong, cariad?","Oje, was ist denn los, Schatz?"],
+ ["Dylan","Cerys and I argue all the time. {{What should I do?}}","Cerys und ich streiten uns die ganze Zeit. Was soll ich tun?"],
+ ["Nain","Hmm. {{You could be a bit nicer towards her.}}","Hmm. Du könntest ein bisschen netter zu ihr sein."],
+ ["Nain","And shouting {{is certainly not the answer.}}","Und Herumschreien ist sicher nicht die Lösung."],
+ ["Dylan","OK. {{I see what you mean.}}","Okay. Ich weiß, was du meinst."]]},
+{ t:"After the match", f:"talking about feelings", x:"Please give me some advice.", l:[
+ ["Cerys","How was your first match, Dylan?","Wie war dein erstes Spiel, Dylan?"],
+ ["Dylan","Before the match, {{I was rather nervous.}}","Vor dem Spiel war ich ziemlich nervös."],
+ ["Dylan","But then we won! {{I was so happy about}} our first goal.","Aber dann haben wir gewonnen! Ich habe mich so über unser erstes Tor gefreut."],
+ ["Cerys","And what about the other team?","Und was ist mit der anderen Mannschaft?"],
+ ["Dylan","Their coach was shouting all the time. {{She sounded really angry.}}","Ihre Trainerin hat die ganze Zeit geschrien. Sie klang richtig wütend."],
+ ["Dylan","When the match was over, {{I was relieved that}} nobody was hurt.","Als das Spiel vorbei war, war ich erleichtert, dass sich niemand verletzt hatte."]]},
+{ t:"Megan's reaction", f:"talking about feelings", x:"Sounds OK.", l:[
+ ["Nain","Did you tell Megan that you're moving to Conwy?","Hast du Megan erzählt, dass du nach Conwy ziehst?"],
+ ["Cerys","Yes. {{I was feeling quite upset when}} I told her.","Ja. Ich war ziemlich aufgewühlt, als ich es ihr gesagt habe."],
+ ["Nain","And how did she react?","Und wie hat sie reagiert?"],
+ ["Cerys","She just turned away. {{I think she was hurt and scared.}}","Sie hat sich einfach abgewandt. Ich glaube, sie war verletzt und hatte Angst."],
+ ["Cerys","{{I was shocked when}} she slammed the door shut.","Ich war geschockt, als sie die Tür zugeknallt hat."],
+ ["Nain","Give her time. She'll call you.","Gib ihr Zeit. Sie wird dich anrufen."]]},
+{ t:"What's in the present?", f:"guessing", x:"What can I do?", l:[
+ ["Rhys","Look, there's a present for Nain on the table. What's in it?","Schau mal, da liegt ein Geschenk für Nain auf dem Tisch. Was ist da drin?"],
+ ["Cerys","{{Maybe it's}} a book.","Vielleicht ist es ein Buch."],
+ ["Rhys","No, {{it can't be}} a book. It's too soft.","Nein, es kann kein Buch sein. Es ist zu weich."],
+ ["Cerys","{{Don't you think it's}} a scarf? Nain is always cold.","Glaubst du nicht, dass es ein Schal ist? Nain ist immer kalt."],
+ ["Rhys","Yes! {{It's probably}} a scarf.","Ja! Es ist wahrscheinlich ein Schal."],
+ ["Rhys","And Mum bought flowers too. {{She probably plans to}} visit Nain tonight.","Und Mama hat auch Blumen gekauft. Sie hat wahrscheinlich vor, Nain heute Abend zu besuchen."]]},
+{ t:"The advice page", f:"giving advice · judging advice", x:"I was rather nervous.", l:[
+ ["Rhys","Read this letter in the magazine. A boy has no friends at his new school.","Lies mal diesen Brief in der Zeitschrift. Ein Junge hat keine Freunde an seiner neuen Schule."],
+ ["Cerys","What does the advice say?","Was steht in dem Rat?"],
+ ["Rhys","“{{Perhaps it would be a good idea to}} join a club.”","„Vielleicht wäre es eine gute Idee, einem Verein beizutreten.“"],
+ ["Cerys","{{Her advice is useful because}} you meet people with the same hobbies.","Ihr Rat ist nützlich, weil man Leute mit den gleichen Hobbys trifft."],
+ ["Rhys","And here: “{{You should really try to}} talk to people in your class.”","Und hier: „Du solltest wirklich versuchen, mit Leuten aus deiner Klasse zu reden.“"],
+ ["Cerys","Hmm. {{I really don't think her advice is very helpful because}} he is very shy.","Hmm. Ich finde ihren Rat wirklich nicht sehr hilfreich, weil er sehr schüchtern ist."]]},
+{ t:"Our song", f:"talking about a song", x:"Great idea!", l:[
+ ["Ms Jones","What do you think of the song, Rhys?","Was hältst du von dem Lied, Rhys?"],
+ ["Rhys","{{To me, the music sounds strong because}} it has a powerful beat.","Für mich klingt die Musik stark, weil sie einen kräftigen Beat hat."],
+ ["Ms Jones","And what about the lyrics?","Und was ist mit dem Text?"],
+ ["Rhys","{{I think the lyrics are moving}}, for example when the singer says “I'm lost without you”.","Ich finde den Text bewegend, zum Beispiel, wenn der Sänger sagt: „Ohne dich bin ich verloren.“"],
+ ["Cerys","{{The person in the song seems to be}} miserable, for example in line 6.","Die Person im Lied scheint unglücklich zu sein, zum Beispiel in Zeile 6."],
+ ["Ms Jones","Good! And do you like it?","Gut! Und gefällt es euch?"],
+ ["Cerys","Yes, it's got a catchy tune.","Ja, es hat eine eingängige Melodie."]]},
+{ t:"Feedback for Dylan", f:"giving feedback", x:"It's certainly not", l:[
+ ["Dylan","Can you read my story about Gillian, please?","Kannst du bitte meine Geschichte über Gillian lesen?"],
+ ["Cerys","Sure. {{The parts of your story fit very well together.}}","Klar. Die Teile deiner Geschichte passen sehr gut zusammen."],
+ ["Cerys","One thing: {{In part 1 you wrote about what happened but you didn't include Gillian's feelings.}}","Eine Sache: In Teil 1 hast du darüber geschrieben, was passiert ist, aber du hast Gillians Gefühle nicht beschrieben."],
+ ["Dylan","Oh. You're right.","Oh. Du hast recht."],
+ ["Cerys","{{Maybe you could have}} added a dialogue, too.","Vielleicht hättest du auch einen Dialog einbauen können."],
+ ["Dylan","{{Great idea!}} Thanks, Cerys.","Tolle Idee! Danke, Cerys."]]},
+{ t:"I'm so unhappy", f:"saying you are unhappy · asking for help", x:"That was so cool of you.", l:[
+ ["Cerys","Megan, {{I am so unhappy!}}","Megan, ich bin so unglücklich!"],
+ ["Megan","Why? What's wrong?","Warum? Was ist los?"],
+ ["Cerys","I don't know anybody in Conwy. {{I'm desperate.}}","Ich kenne niemanden in Conwy. Ich bin verzweifelt."],
+ ["Megan","Oh no! But you've only been there for a week.","Oh nein! Aber du bist doch erst seit einer Woche dort."],
+ ["Cerys","I know. {{What can I do?}}","Ich weiß. Was kann ich tun?"],
+ ["Megan","{{Think about what you can do to}} meet new people. And call me every day!","Überleg dir, was du tun kannst, um neue Leute kennenzulernen. Und ruf mich jeden Tag an!"]]},
+{ t:"The wedding photo", f:"talking about another person", x:"I was relieved to", l:[
+ ["Rhys","Look at this photo from the wedding!","Schau dir dieses Foto von der Hochzeit an!"],
+ ["Cerys","Ha! {{You look so embarrassed in this picture.}}","Ha! Du siehst auf diesem Bild so verlegen aus."],
+ ["Rhys","I was! I had to dance with Nain in front of 100 people.","War ich auch! Ich musste vor 100 Leuten mit Nain tanzen."],
+ ["Cerys","But you did it. {{You were so brave.}}","Aber du hast es gemacht. Du warst so mutig."],
+ ["Rhys","And my new shoes really hurt.","Und meine neuen Schuhe haben richtig wehgetan."],
+ ["Cerys","Oh no, so {{you felt uncomfortable.}}","Oh nein, also hast du dich unwohl gefühlt."]]},
+{ t:"A fight with Tom", f:"asking for help · giving advice", x:"It's probably", l:[
+ ["Rhys","Dylan, I had a fight with Tom. {{You must help me, please!}}","Dylan, ich hatte Streit mit Tom. Du musst mir bitte helfen!"],
+ ["Dylan","What happened?","Was ist passiert?"],
+ ["Rhys","He laughed at my drawing, so I hid his headphones. {{Please give me some advice.}}","Er hat über meine Zeichnung gelacht, also habe ich seine Kopfhörer versteckt. Bitte gib mir einen Rat."],
+ ["Dylan","{{You could}} say sorry and give them back.","Du könntest dich entschuldigen und sie ihm zurückgeben."],
+ ["Dylan","Hiding his stuff {{is certainly not the answer.}}","Sein Zeug zu verstecken, ist sicher nicht die Lösung."],
+ ["Rhys","{{I see what you mean.}} I'll call him.","Ich weiß, was du meinst. Ich rufe ihn an."]]},
+{ t:"After the phone call", f:"talking about feelings · talking about another person", x:"Maybe it's", l:[
+ ["Dylan","Did you talk to Tom?","Hast du mit Tom geredet?"],
+ ["Rhys","Yes. At first {{I was a bit disappointed by}} his reaction. He didn't say anything.","Ja. Zuerst war ich ein bisschen enttäuscht von seiner Reaktion. Er hat nichts gesagt."],
+ ["Rhys","But then he said sorry, too. {{I was relieved to}} hear that.","Aber dann hat er sich auch entschuldigt. Ich war erleichtert, das zu hören."],
+ ["Dylan","{{That was so cool of you.}} Saying sorry isn't easy.","Das war echt cool von dir. Sich zu entschuldigen ist nicht leicht."],
+ ["Rhys","Thanks. We're getting together after school tomorrow.","Danke. Wir treffen uns morgen nach der Schule."]]}
+];
+
+// ===== GRAMMAR MODULE THEME 1 =====
+const app = document.getElementById("app");
+const $ = s => app.querySelector(s);
+const $$ = s => [...app.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const LABEL = { S:"subject", A:"helping verb", V:"verb", N:"not", Q:"question word", C:"connective" };
+const KIND = { "+":["k-plus","+","statement"], "-":["k-minus","–","negative"], "?":["k-q","?","question"], "wh":["k-wh","wh-?","question with a question word"], "past":["k-past","past","compare"] };
+let lang = "en";
+try{ if(localStorage.getItem("g1-big")==="1") document.documentElement.classList.add("big"); }catch(e){}
+
+// ---------- markup ----------
+// vocab {text|key}
+const vocab = s => s.replace(/\{([^|}]+)\|([^}]+)\}/g, (m, t, k) => WORDS[k] ? `<button class="voc" data-k="${esc(k)}">${t}</button>` : t);
+// colour blocks [X text]
+function blocks(s, opts = {}){
+  const parts = []; const re = /\[([SAVNQC]) ([^\]]+)\]/g; let last = 0, m;
+  while((m = re.exec(s))){ if(m.index > last) parts.push({ t:"p", x:s.slice(last, m.index) }); parts.push({ t:m[1], x:m[2] }); last = re.lastIndex; }
+  if(last < s.length) parts.push({ t:"p", x:s.slice(last) });
+  return parts;
+}
+function blocksHTML(s, moveAux){
+  return blocks(s).map((p,i) => p.t==="p" ? `<span class="plain">${vocab(esc(p.x).replace(/\{([^|}]+)\|([^}]+)\}/g,"{$1|$2}"))}</span>`
+    : `<span class="blk ${p.t} ${moveAux && p.t==="A" && i===0 ? "moved" : ""}"><span>${esc(p.x)}</span><small>${LABEL[p.t]}</small></span>`).join("");
+}
+const T = o => o ? (o[lang] ?? o.en) : "";
+
+// ---------- vocabulary popover ----------
+let pop = null;
+function closePop(){ if(pop){ pop.remove(); pop = null; $$(".voc.open").forEach(v=>v.classList.remove("open")); } }
+document.addEventListener("click", e => {
+  const v = e.target.closest(".voc");
+  if(!v){ if(!e.target.closest(".pop")) closePop(); return; }
+  const was = v.classList.contains("open"); closePop(); if(was) return;
+  const w = WORDS[v.dataset.k]; if(!w) return;
+  v.classList.add("open");
+  pop = document.createElement("div"); pop.className = "pop"; pop.setAttribute("role","tooltip");
+  pop.innerHTML = `<b>${esc(w[0])}</b>${esc(w[1])}`;
+  document.body.appendChild(pop);
+  const r = v.getBoundingClientRect(), pw = pop.offsetWidth;
+  pop.style.left = Math.max(8, Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - pw - 8)) + "px";
+  pop.style.top = (window.scrollY + r.bottom + 6) + "px";
+});
+
+// ---------- scenery ----------
+const DRAGON = `<svg viewBox="0 0 160 140" aria-hidden="true"><path d="M118 92 C140 96 150 80 146 66 C152 74 156 86 150 98 C142 112 120 110 106 100Z" fill="#C8102E"/><path d="M150 64 l8 -6 l-2 10z" fill="#C8102E"/><path d="M62 52 L40 8 L72 34 L84 4 L94 40Z" fill="#8E0B20"/><ellipse cx="88" cy="88" rx="40" ry="30" fill="#C8102E"/><ellipse cx="86" cy="96" rx="24" ry="16" fill="#F2A3AE"/><circle cx="46" cy="66" r="24" fill="#C8102E"/><path d="M30 48 l-6 -16 l14 10z M48 44 l2 -18 l8 16z" fill="#8E0B20"/><circle cx="40" cy="62" r="6" fill="#fff"/><circle cx="38" cy="62" r="3" fill="#1D2B33"/><path d="M24 74 q10 8 22 2" stroke="#8E0B20" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="66" y="110" width="12" height="20" rx="5" fill="#8E0B20"/><rect x="100" y="110" width="12" height="20" rx="5" fill="#8E0B20"/></svg>`;
+document.body.insertAdjacentHTML("afterbegin", `<div class="hills" aria-hidden="true"><svg viewBox="0 0 1440 200" preserveAspectRatio="none"><path d="M0 110 C200 40 380 90 560 66 C760 40 900 105 1100 76 C1260 52 1360 82 1440 70 L1440 200 L0 200Z" fill="#7FBF7A"/><path d="M0 150 C240 104 420 142 640 120 C860 98 1040 150 1240 128 C1340 116 1400 128 1440 124 L1440 200 L0 200Z" fill="#00843D"/><g fill="#5F6F78"><rect x="1180" y="40" width="64" height="50"/><rect x="1170" y="26" width="20" height="26"/><rect x="1234" y="26" width="20" height="26"/></g><g fill="#FFC72C"><circle cx="160" cy="176" r="6"/><circle cx="200" cy="182" r="5"/><circle cx="760" cy="178" r="6"/></g></svg></div>`);
+
+function tools(){
+  const big = document.documentElement.classList.contains("big");
+  return `<button class="ibtn ${big?"on":""}" id="big" aria-pressed="${big}" title="Bigger text for the board">A+</button>`;
+}
+function wireTools(){
+  $("#big").onclick = () => { const b = document.documentElement.classList.toggle("big"); try{ localStorage.setItem("g1-big", b?"1":"0"); }catch(e){} $("#big").classList.toggle("on", b); };
+}
+
+// ---------- home ----------
+function home(){
+  closePop(); window.scrollTo(0,0); history.replaceState(null,"","#grammar");
+  app.innerHTML = `
+  <div class="bar"><button class="ibtn" id="st">← Start</button><span class="grow"></span>${tools()}</div>
+  <div class="hero">${DRAGON}<div><h1>Grammar Theme 1</h1><p><b>Croeso!</b> Learn the grammar of “On the move” step by step.</p></div></div>
+  <div class="card"><h3>Meet the people in this module</h3><p style="margin:0">${STORY.en}</p></div>
+  <div class="card"><h3>Our colour code</h3>
+    <div class="legend">${["S","A","V","N","Q","C"].map(k=>`<span class="blk ${k}"><span>${{S:"Cerys",A:"was",V:"reading",N:"not",Q:"What",C:"because"}[k]}</span><small>${LABEL[k]}</small></span>`).join("")}</div>
+    <p class="small muted" style="margin:10px 0 0">Words with a dotted line come from the Theme 1 word list. Tap them to see the German meaning.</p></div>
+  <div class="lessons">${LESSONS.map(l=>`<button class="lcard" data-l="${l.id}"><span class="num">${l.id}</span><span><b>${esc(l.title)}${l.tag?`<span class="r">revision</span>`:""}</b><small>Grammar ${esc(l.page)} · explanation + 3 exercises</small></span></button>`).join("")}</div>`;
+  wireTools(); $("#st").onclick = startScreen;
+  $$("[data-l]").forEach(b => b.onclick = () => lesson(b.dataset.l));
+}
+
+// ---------- lesson ----------
+function lesson(id){
+  closePop(); window.scrollTo(0,0); history.replaceState(null,"","#"+id);
+  const L = LESSONS.find(l => l.id===id), i = LESSONS.indexOf(L);
+  const prev = LESSONS[i-1], next = LESSONS[i+1];
+  app.innerHTML = `
+  <div class="bar"><button class="ibtn" id="hm" aria-label="All lessons">← All lessons</button><span class="grow"></span>
+    <button class="ibtn" id="lg" aria-pressed="${lang==="de"}">${lang==="en" ? "🇩🇪 Auf Deutsch" : "🇬🇧 In English"}</button>${tools()}</div>
+  <h1 style="margin-bottom:.1em">${esc(L.id)} ${esc(L.title)}</h1>
+  <p class="muted">${esc(L.de)} · Camden Town Grammar ${esc(L.page)}</p>
+  <nav class="steps" aria-label="Parts of this lesson"><a href="#ex0">📘 Explanation</a><a href="#ex1">1 · Choose</a><a href="#ex2">2 · Fill in</a><a href="#ex3">3 · Write</a></nav>
+
+  <section class="card" id="ex0">
+    <h2>📘 ${lang==="en" ? "The rule" : "Die Regel"}</h2>
+    <p>${T(L.use)}</p>
+    <div class="info form"><b>${lang==="en" ? "Form" : "Bildung"}:</b> ${T(L.form)}</div>
+    ${L.timeline ? timeline() : ""}
+    ${L.conn ? `<div class="conn" style="margin:10px 0">${L.conn.map(c=>`<span><b>${c[0]}</b> – ${c[1]}</span>`).join("")}</div>` : ""}
+    <div class="ptable">${L.rows.map(r => `<div class="prow"><span class="badge ${KIND[r.k][0]}" title="${KIND[r.k][2]}">${KIND[r.k][1]}</span>
+      <div><div>${blocksHTML(r.s, r.k==="?" && /^\[A /.test(r.s))}</div>${r.alt ? `<div class="sub">short form: ${blocksHTML(r.alt)}</div>` : ""}${r.short ? `<div class="sub">Short answers: <b>${esc(r.short)}</b></div>` : ""}${r.note ? `<div class="sub">${T(r.note)}</div>` : ""}</div></div>`).join("")}</div>
+    ${machineHTML(L)}
+    <div class="info move">${T(L.move)}</div>
+    ${L.signal ? `<div class="info sig"><b>${lang==="en" ? "Signal words" : "Signalwörter"}:</b> ${L.signal}</div>` : ""}
+    <div class="info watch"><b>⚠ ${lang==="en" ? "Watch out" : "Achtung"}:</b> ${T(L.watch)}</div>
+  </section>
+
+  <section class="card" id="ex1">
+    <div class="exhead"><span class="tag">1</span><h2>Choose the right form</h2></div>
+    <p class="muted">Tap the right word in each sentence.</p>
+    <div id="e1">${L.ex1.map((it,k)=>`<div class="item" data-i="${k}"><span class="badge ${KIND[it.k][0]}" title="${KIND[it.k][2]}">${KIND[it.k][1]}</span>
+      <div class="sent">${choiceHTML(it.q, k)}</div><span class="res" aria-live="polite"></span></div>`).join("")}</div>
+    <div class="row"><button class="btn green" id="c1">✓ Check</button><button class="btn alt" id="s1">👁 Show solutions</button><button class="btn alt" id="r1">↺ Reset</button><span class="score" id="sc1"></span></div>
+  </section>
+
+  <section class="card" id="ex2">
+    <div class="exhead"><span class="tag">2</span><h2>Fill in the right form</h2></div>
+    <p class="muted">Use the verb in brackets. Write it in the right form.</p>
+    <div id="e2">${L.ex2.map((it,k)=>`<div class="item" data-i="${k}"><span class="badge ${KIND[it.k][0]}" title="${KIND[it.k][2]}">${KIND[it.k][1]}</span>
+      <div class="sent">${gapHTML(it.q, k)}</div><span class="res" aria-live="polite"></span></div>`).join("")}</div>
+    <div class="row"><button class="btn green" id="c2">✓ Check</button><button class="btn alt" id="s2">👁 Show solutions</button><button class="btn alt" id="r2">↺ Reset</button><span class="score" id="sc2"></span></div>
+  </section>
+
+  <section class="card" id="ex3">
+    <div class="exhead"><span class="tag">3</span><h2>Your turn: write</h2></div>
+    <p>${T(L.ex3)}</p>
+    <div class="legend" style="margin-bottom:10px"><span class="badge k-plus">+</span><span class="badge k-minus">–</span><span class="badge k-q">?</span></div>
+    <label class="small muted" for="w3">Write here – or in your exercise book.</label>
+    <textarea id="w3" spellcheck="false"></textarea>
+    <div class="row"><button class="btn alt" id="s3">👁 Show a model answer and checklist</button></div>
+    <div id="m3"></div>
+  </section>
+
+  <div class="row" style="justify-content:space-between">
+    ${prev ? `<button class="btn alt" data-go="${prev.id}">← ${esc(prev.id)} ${esc(prev.title)}</button>` : "<span></span>"}
+    ${next ? `<button class="btn" data-go="${next.id}">${esc(next.id)} ${esc(next.title)} →</button>` : `<button class="btn" id="hm2">All lessons</button>`}
+  </div>`;
+  wireTools();
+  $("#hm").onclick = home; const h2 = $("#hm2"); if(h2) h2.onclick = home;
+  $("#lg").onclick = () => { lang = lang==="en" ? "de" : "en"; const y = window.scrollY; lesson(id); window.scrollTo(0, y); };
+  $$("[data-go]").forEach(b => b.onclick = () => lesson(b.dataset.go));
+  $$(".steps a").forEach(a => a.onclick = e => { e.preventDefault(); document.querySelector(a.getAttribute("href")).scrollIntoView({ behavior:"smooth" }); });
+  wireMachine(L); wireEx1(L); wireEx2(L);
+  $("#s3").onclick = () => {
+    $("#m3").innerHTML = `<div class="model"><b>Model answer</b><ol>${L.ex3.model.map(m=>`<li>${esc(m)}</li>`).join("")}</ol>
+      <b>Check your sentences</b>${L.ex3.check.map((c,k)=>`<label class="chk"><input type="checkbox"><span>${esc(c)}</span></label>`).join("")}</div>`;
+  };
+}
+
+function timeline(){
+  return `<div class="tl"><svg viewBox="0 0 600 120" width="100%" role="img" aria-label="Timeline: a long action in the past progressive and a short new event in the simple past">
+    <line x1="20" y1="70" x2="580" y2="70" stroke="#9AA6B0" stroke-width="3"/><text x="560" y="100" font-size="14" fill="#4F5F69">now</text>
+    <rect x="80" y="54" width="300" height="32" rx="10" fill="#00843D" opacity=".9"/><text x="230" y="75" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">was packing (background)</text>
+    <text x="300" y="38" font-size="30" text-anchor="middle">⚡</text><text x="300" y="16" font-size="14" fill="#C8102E" text-anchor="middle" font-weight="700">the phone rang (new event)</text>
+    <line x1="300" y1="44" x2="300" y2="90" stroke="#C8102E" stroke-width="3"/></svg></div>`;
+}
+
+// ---------- sentence machine (+ / – / ?) ----------
+function machineHTML(L){
+  const rows = ["+","-","?"].map(k => L.rows.find(r => r.k===k)).filter(Boolean);
+  if(rows.length < 3) return "";
+  return `<div class="machine"><h3>⚙ Sentence machine</h3><p class="small" style="margin:0;color:#CFE3EA">Tap +, – and ? and watch which blocks move.</p>
+    <div class="mline" id="ml" aria-live="polite"></div>
+    <div class="mbtns">${rows.map(r=>`<button data-k="${r.k}" aria-label="${KIND[r.k][2]}">${KIND[r.k][1]}</button>`).join("")}</div>
+    <p class="mnote" id="mn"></p></div>`;
+}
+function wireMachine(L){
+  const ml = $("#ml"); if(!ml) return;
+  const notes = { "+":{en:"Statement: subject first.",de:"Aussage: Das Subjekt steht vorne."}, "-":{en:"Negative: not / n't is added after the helping verb.",de:"Verneinung: not / n't kommt hinter das Hilfsverb."}, "?":{en:"Question: the helping verb jumps to the front.",de:"Frage: Das Hilfsverb springt nach vorne."} };
+  let cur = null;
+  const show = k => {
+    const r = L.rows.find(x => x.k===k);
+    const parts = blocks(r.s.replace(/<[^>]+>/g,"")).filter(p => !(p.t==="p" && !p.x.trim()));
+    // remember old positions (FLIP)
+    const old = {}; $$("#ml [data-id]").forEach(el => old[el.dataset.id] = el.getBoundingClientRect());
+    const seen = {};
+    ml.innerHTML = parts.map(p => {
+      const base = (p.t + ":" + p.x.toLowerCase().trim()); seen[base] = (seen[base]||0) + 1; const pid = base + "#" + seen[base];
+      return p.t==="p" ? p.x.trim().split(/\s+/).map((w,j)=>`<span class="plain" data-id="p:${esc(w.toLowerCase())}#${j}">${esc(w.replace(/\{([^|}]+)\|[^}]+\}/g,"$1"))}</span>`).join("")
+                       : `<span class="blk ${p.t}" data-id="${esc(pid)}"><span>${esc(p.x)}</span><small>${LABEL[p.t]}</small></span>`;
+    }).join("");
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches) $$("#ml [data-id]").forEach(el => {
+      const o = old[el.dataset.id], n = el.getBoundingClientRect();
+      if(o){ const dx = o.left-n.left, dy = o.top-n.top; if(dx||dy){ el.animate([{ transform:`translate(${dx}px,${dy}px)` },{ transform:"none" }], { duration:550, easing:"cubic-bezier(.2,.8,.2,1)" }); } }
+      else if(cur) el.animate([{ opacity:0, transform:"scale(.4)" },{ opacity:1, transform:"none" }], { duration:450 });
+    });
+    $$(".mbtns button").forEach(b => b.classList.toggle("on", b.dataset.k===k));
+    $("#mn").textContent = T(notes[k]); cur = k;
+  };
+  $$(".mbtns button").forEach(b => b.onclick = () => show(b.dataset.k));
+  show("+");
+}
+
+// ---------- exercise 1: choose ----------
+function choiceHTML(q, k){
+  return vocab(esc(q).replace(/\{([^|}]+)\|([^}]+)\}/g,"{$1|$2}")).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/, (m,a,b) =>
+    `<span class="choice" role="group"><button data-v="${a}">${a}</button><button data-v="${b}">${b}</button></span>`);
+}
+function wireEx1(L){
+  const items = $$("#e1 .item");
+  items.forEach(it => it.querySelectorAll(".choice button").forEach(b => b.onclick = () => {
+    it.querySelectorAll(".choice button").forEach(x => x.classList.remove("sel","right","wrong")); b.classList.add("sel"); it.querySelector(".res").textContent = "";
+  }));
+  const mark = reveal => {
+    let ok = 0;
+    items.forEach((it,k) => {
+      const a = L.ex1[k].a, sel = it.querySelector(".choice button.sel");
+      it.querySelectorAll(".choice button").forEach(b => b.classList.remove("right","wrong"));
+      if(reveal){ it.querySelector(`.choice button[data-v="${CSS.escape(a)}"]`).classList.add("right"); it.querySelector(".res").textContent = ""; if(sel && sel.dataset.v===a) ok++; return; }
+      if(!sel){ it.querySelector(".res").textContent = "…"; return; }
+      const right = sel.dataset.v===a; if(right) ok++;
+      sel.classList.add(right ? "right" : "wrong"); it.querySelector(".res").textContent = right ? "✅" : "❌";
+    });
+    $("#sc1").textContent = `${ok} / ${items.length}`;
+  };
+  $("#c1").onclick = () => mark(false);
+  $("#s1").onclick = () => mark(true);
+  $("#r1").onclick = () => { items.forEach(it => { it.querySelectorAll(".choice button").forEach(b => b.classList.remove("sel","right","wrong")); it.querySelector(".res").textContent = ""; }); $("#sc1").textContent = ""; };
+}
+
+// ---------- exercise 2: fill in ----------
+function gapHTML(q, k){
+  let g = 0;
+  const html = vocab(esc(q).replace(/\{([^|}]+)\|([^}]+)\}/g,"{$1|$2}"));
+  return html.replace(/___/g, () => `<input class="gap" data-g="${g++}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Gap ${g}">`)
+             .replace(/\(([^)]+)\)/g, `<span class="hint">($1)</span>`) + `<span class="sol" hidden></span>`;
+}
+const norm = s => String(s).replace(/[’‘`´]/g,"'").replace(/\s+/g," ").trim().replace(/[.!?]+$/,"").toLowerCase();
+const expand = s => s.replace(/\bwon't\b/g,"will not").replace(/\bcan't\b/g,"cannot").replace(/n't\b/g," not").replace(/'m\b/g," am").replace(/'re\b/g," are").replace(/'ve\b/g," have").replace(/^'ve$/,"have").replace(/\s+/g," ").trim();
+const same = (a, b) => norm(a)===norm(b) || expand(norm(a))===expand(norm(b));
+function wireEx2(L){
+  const items = $$("#e2 .item");
+  items.forEach(it => it.querySelectorAll(".gap").forEach(g => g.oninput = () => { g.classList.remove("right","wrong"); it.querySelector(".res").textContent = ""; }));
+  const mark = reveal => {
+    let ok = 0;
+    items.forEach((it,k) => {
+      const ans = L.ex2[k].a, gaps = [...it.querySelectorAll(".gap")]; let all = true;
+      gaps.forEach((g,j) => {
+        const good = ans[j].some(a => same(g.value, a));
+        if(reveal){ g.value = ans[j][0]; g.classList.remove("wrong"); g.classList.add("right"); }
+        else { g.classList.toggle("right", good && !!g.value.trim()); g.classList.toggle("wrong", !good && !!g.value.trim()); if(!good) all = false; }
+      });
+      const sol = it.querySelector(".sol");
+      if(reveal){ sol.hidden = true; it.querySelector(".res").textContent = ""; return; }
+      const empty = gaps.every(g => !g.value.trim());
+      if(empty){ it.querySelector(".res").textContent = "…"; sol.hidden = true; return; }
+      if(all) ok++;
+      it.querySelector(".res").textContent = all ? "✅" : "❌";
+      sol.hidden = all; if(!all) sol.textContent = "→ " + ans.map(a => a[0]).join(" … ");
+    });
+    if(!reveal) $("#sc2").textContent = `${ok} / ${items.length}`;
+  };
+  $("#c2").onclick = () => mark(false);
+  $("#s2").onclick = () => mark(true);
+  $("#r2").onclick = () => { items.forEach(it => { it.querySelectorAll(".gap").forEach(g => { g.value = ""; g.classList.remove("right","wrong"); }); it.querySelector(".res").textContent = ""; it.querySelector(".sol").hidden = true; }); $("#sc2").textContent = ""; };
+}
+
+
+
+// ===================== START SCREEN + VOCABULARY PART =====================
+const shuffle = a => { a = a.slice(); for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; } return a; };
+const store = (k, v) => { try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} };
+const load = (k, d) => { try{ const v = JSON.parse(localStorage.getItem(k)); return v ?? d; }catch(e){ return d; } };
+const go = (h, f) => { closePop(); window.scrollTo(0,0); history.replaceState(null,"","#"+h); f(); };
+const HEADFIX = { "to make sth (e.g. the team)":"make the team", "to feel like doing sth":"feel like", "to have sth in common (with sb)":"in common", "I see what you mean.":"I see what you mean" };
+const head = w => HEADFIX[w] ?? w.replace(/^to /,"").replace(/,.*$/,"").replace(/\s*\(.*?\)\s*/g," ").replace(/[.!]$/,"").trim();   // "to drive, drove, driven" → "drive"
+const bar = (back, label) => `<div class="bar"><button class="ibtn" id="bk">← ${label}</button><span class="grow"></span>${tools()}</div>`;
+const wireBar = f => { wireTools(); $("#bk").onclick = f; };
+
+let SEL = new Set(load("t1-sel", SECTIONS).filter(s => SECTIONS.includes(s)));
+let IRR = load("t1-irr", "both");
+const chosen = () => VOCAB.filter(v => SEL.has(v.sec));
+const hasRe = (txt, f) => new RegExp("(^|[^a-z])" + f.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g,"\\$&") + "($|[^a-z])").test(expand(norm(txt)));
+
+// ---------- start ----------
+function startScreen(){
+  go("", () => {});
+  history.replaceState(null,"",location.pathname);
+  app.innerHTML = `
+  <div class="bar"><span class="grow"></span>${tools()}</div>
+  <div class="hero">${DRAGON}<div><h1>Theme 1 – On the move</h1><p><b>Croeso!</b> What do you want to practise today?</p></div></div>
+  <div class="big2">
+    <button class="tile" id="tg"><span class="ico">🧩</span><b>Grammar</b><small>6 lessons with explanations and 3 exercises each</small></button>
+    <button class="tile green" id="tv"><span class="ico">📚</span><b>Vocabulary</b><small>${VOCAB.length} words · flashcards · gap sentences · translation · irregular verbs · Say it in English</small></button>
+  </div>`;
+  wireTools();
+  $("#tg").onclick = home; $("#tv").onclick = vocabHome;
+}
+
+// ---------- vocabulary home ----------
+function vocabHome(){
+  go("vocab", () => {});
+  const cnt = s => VOCAB.filter(v => v.sec===s).length;
+  app.innerHTML = `${bar(0,"Start")}
+  <h1>Vocabulary Theme 1</h1>
+  <section class="card"><div class="exhead"><span class="tag">1</span><h2>Choose your words</h2></div>
+    <p class="muted">The numbers are the same as in the word list in your book (pp. 221–225). Tap a number to switch it on or off.</p>
+    <div class="row" style="margin:0 0 10px"><button class="btn alt sm" id="all">✓ All</button><button class="btn alt sm" id="none">✕ None</button><span class="score" id="nsel"></span></div>
+    <div class="chips">${SECTIONS.map(s=>`<button class="chip" data-s="${s}" aria-pressed="${SEL.has(s)}"><b>${s}</b><small>${cnt(s)} ${cnt(s)===1?"word":"words"}</small></button>`).join("")}</div>
+  </section>
+  <section class="card"><div class="exhead"><span class="tag">2</span><h2>Choose how to practise</h2></div>
+    <div class="modes">
+      <button class="mode" data-m="cards"><span class="ico">🃏</span><b>Flashcards</b><small>Tap a card to see the German word.</small></button>
+      <button class="mode" data-m="gaps"><span class="ico">✏️</span><b>Gap sentences</b><small>Put the right word into the sentence.</small></button>
+      <button class="mode" data-m="trans"><span class="ico">🔁</span><b>Translate</b><small>Say the German sentence in English.</small></button>
+    </div>
+    <p class="warn" id="nowords" hidden>Please choose at least one number first.</p>
+  </section>
+  <section class="card"><div class="exhead"><span class="tag">★</span><h2>Extras</h2></div>
+    <div class="modes">
+      <button class="mode" data-x="irr"><span class="ico">🐉</span><b>Irregular verbs</b><small>The ${IRREG.length} irregular verbs from Theme 1.</small></button>
+      <button class="mode" data-x="say"><span class="ico">💬</span><b>Say it in English</b><small>Complete dialogues with useful phrases (p. 226).</small></button>
+    </div>
+  </section>`;
+  wireBar(startScreen);
+  const upd = () => {
+    $$(".chip").forEach(c => c.setAttribute("aria-pressed", SEL.has(c.dataset.s)));
+    const n = chosen().length; $("#nsel").textContent = `${n} ${n===1?"word":"words"} chosen`;
+    store("t1-sel", [...SEL]); $("#nowords").hidden = n > 0;
+  };
+  $$(".chip").forEach(c => c.onclick = () => { SEL.has(c.dataset.s) ? SEL.delete(c.dataset.s) : SEL.add(c.dataset.s); upd(); });
+  $("#all").onclick = () => { SEL = new Set(SECTIONS); upd(); };
+  $("#none").onclick = () => { SEL = new Set(); upd(); };
+  $$("[data-m]").forEach(b => b.onclick = () => { if(!chosen().length){ $("#nowords").hidden = false; $("#nowords").scrollIntoView({block:"center"}); return; } ({cards, gaps, trans})[b.dataset.m](); });
+  $("[data-x=irr]").onclick = irregular; $("[data-x=say]").onclick = sayList;
+  upd();
+}
+const selInfo = () => { const s = [...SEL]; return s.length===SECTIONS.length ? "all numbers" : (s.length > 6 ? `${s.length} numbers` : s.join(", ")); };
+
+// ---------- flashcards ----------
+function cards(){
+  go("cards", () => {});
+  let deck = shuffle(chosen()), known = 0, total = deck.length, again = 0;
+  app.innerHTML = `${bar(0,"Vocabulary")}
+  <h1>🃏 Flashcards</h1><p class="muted">Words: ${esc(selInfo())} · Tap the card to turn it over.</p>
+  <div class="prog"><div id="pb"></div></div><p class="small muted" id="pt"></p>
+  <div id="fcw"></div>`;
+  wireBar(vocabHome);
+  const show = () => {
+    $("#pb").style.width = (100*known/total) + "%";
+    $("#pt").textContent = `✓ ${known} of ${total} known` + (again ? ` · ${again}× practised again` : "");
+    if(!deck.length){
+      $("#fcw").innerHTML = `<div class="card done"><h2>🎉 Da iawn! Well done!</h2><p>You know all ${total} words.</p>
+        <div class="row"><button class="btn" id="rp">↺ Start again</button><button class="btn alt" id="bv">Choose other words</button></div></div>`;
+      $("#rp").onclick = cards; $("#bv").onclick = vocabHome; return;
+    }
+    const w = deck[0];
+    $("#fcw").innerHTML = `<button class="fc" id="fc" aria-label="Flashcard. Tap to turn over."><span class="in">
+        <span class="face front"><small>${w.sec}</small><b>${esc(w.en)}</b><em>tap to turn over</em></span>
+        <span class="face back"><small>${w.sec}</small><b>${esc(w.de)}</b><em>${esc(w.en)}</em></span></span></button>
+      <div class="row center" id="fb" hidden><button class="btn green" id="ok">✓ I knew it</button><button class="btn" id="ag">↺ Practise again</button></div>`;
+    $("#fc").onclick = () => { $("#fc").classList.toggle("flip"); $("#fb").hidden = false; };
+    $("#ok").onclick = () => { deck.shift(); known++; show(); };
+    $("#ag").onclick = () => { deck.push(deck.shift()); again++; show(); };
+  };
+  show();
+}
+
+// ---------- gap sentences ----------
+function roundsOf(list, n){ const s = shuffle(list), out = []; for(let i=0;i<s.length;i+=n) out.push(s.slice(i,i+n)); return out; }
+let BANK = load("t1-bank", true);
+function gaps(){
+  go("gaps", () => {});
+  const R = roundsOf(chosen(), 10); let r = 0;
+  const draw = () => {
+    const set = R[r];
+    app.innerHTML = `${bar(0,"Vocabulary")}
+    <h1>✏️ Gap sentences</h1><p class="muted">Words: ${esc(selInfo())} · Round ${r+1} of ${R.length}</p>
+    <section class="card">
+      <div class="row" style="margin-top:0"><button class="ibtn ${BANK?"on":""}" id="wb" aria-pressed="${BANK}">🧺 Word bank ${BANK?"on":"off"}</button><span class="small muted">Sometimes you have to change the form of the word (e.g. <i>hug → hugged</i>).</span></div>
+      <div class="bank" id="bank" ${BANK?"":"hidden"}>${shuffle(set).map(w=>`<span>${esc(head(w.en))}</span>`).join("")}</div>
+      <div id="e2">${set.map((w,k)=>`<div class="item" data-i="${k}"><span class="badge k-num">${k+1}</span>
+        <div class="sent">${esc(w.gap).replace("___", `<input class="gap wide" aria-label="gap ${k+1}" autocomplete="off" autocapitalize="off" spellcheck="false">`)}<span class="sol" hidden></span></div><span class="res"></span></div>`).join("")}</div>
+      <div class="row"><button class="btn green" id="c2">✓ Check</button><button class="btn alt" id="s2">👁 Show solutions</button><button class="btn alt" id="r2">↺ Reset</button><span class="score" id="sc2"></span></div>
+    </section>
+    <div class="row" style="justify-content:flex-end">${r < R.length-1 ? `<button class="btn" id="nx">Next round →</button>` : `<button class="btn" id="nx">↺ New mix</button>`}</div>`;
+    wireBar(vocabHome);
+    $("#wb").onclick = () => { BANK = !BANK; store("t1-bank", BANK); $("#bank").hidden = !BANK; $("#wb").classList.toggle("on", BANK); $("#wb").setAttribute("aria-pressed", BANK); $("#wb").textContent = `🧺 Word bank ${BANK?"on":"off"}`; };
+    wireEx2({ ex2: set.map(w => ({ a: [w.ga] })) });
+    $("#nx").onclick = () => { if(r < R.length-1){ r++; draw(); window.scrollTo(0,0); } else gaps(); };
+    $$(".gap")[0]?.focus({ preventScroll:true });
+  };
+  draw();
+}
+
+// ---------- translate ----------
+function trans(){
+  go("trans", () => {});
+  const R = roundsOf(chosen(), 5); let r = 0;
+  const de = s => esc(s).replace(/\[\[(.+?)\]\]/g, `<mark>$1</mark>`);
+  const draw = () => {
+    const set = R[r];
+    app.innerHTML = `${bar(0,"Vocabulary")}
+    <h1>🔁 Translate</h1><p class="muted">Words: ${esc(selInfo())} · Round ${r+1} of ${R.length}</p>
+    <p>Say the sentence in English. Use the word from the word list for the <mark>coloured</mark> German words.</p>
+    ${set.map((w,k)=>`<section class="card tr" data-i="${k}">
+      <p class="de"><span class="badge k-num">${k+1}</span> ${de(w.tde)}</p>
+      <input class="tin" aria-label="Your English sentence ${k+1}" autocomplete="off" autocapitalize="sentences" spellcheck="false" placeholder="Write in English …">
+      <div class="row"><button class="btn green sm" data-c="${k}">✓ Check</button><button class="btn alt sm" data-h="${k}">💡 Hint</button><button class="btn alt sm" data-m="${k}">👁 Model</button></div>
+      <div class="fbk" aria-live="polite"></div></section>`).join("")}
+    <div class="row" style="justify-content:flex-end">${r < R.length-1 ? `<button class="btn" id="nx">Next round →</button>` : `<button class="btn" id="nx">↺ New mix</button>`}</div>`;
+    wireBar(vocabHome);
+    const card = k => $(`.tr[data-i="${k}"]`);
+    $$("[data-c]").forEach(b => b.onclick = () => {
+      const k = +b.dataset.c, w = set[k], c = card(k), v = c.querySelector(".tin").value;
+      if(!v.trim()){ c.querySelector(".fbk").innerHTML = `<p class="muted">Write your sentence first.</p>`; return; }
+      const ok = w.tchk.some(f => hasRe(v, f));
+      c.querySelector(".tin").classList.toggle("right", ok); c.querySelector(".tin").classList.toggle("wrong", !ok);
+      c.querySelector(".fbk").innerHTML = (ok ? `<p class="okmsg">✅ Great – you used <b>${esc(head(w.en))}</b>.</p>`
+        : `<p class="nomsg">❌ The word for <mark>${esc(w.tde.match(/\[\[(.+?)\]\]/)[1])}</mark> is missing. Try again or tap 💡 Hint.</p>`)
+        + `<div class="model"><b>Model:</b> ${esc(w.ten)}<br><span class="small muted">Your sentence can be a bit different. Compare it with the model.</span></div>`;
+    });
+    $$("[data-h]").forEach(b => b.onclick = () => { const w = set[+b.dataset.h]; card(+b.dataset.h).querySelector(".fbk").innerHTML = `<p class="muted">💡 Use: <b>${esc(w.en)}</b></p>`; });
+    $$("[data-m]").forEach(b => b.onclick = () => { const w = set[+b.dataset.m]; card(+b.dataset.m).querySelector(".fbk").innerHTML = `<div class="model"><b>Model:</b> ${esc(w.ten)}</div>`; });
+    $$(".tin").forEach(i => { i.oninput = () => i.classList.remove("right","wrong"); i.onkeydown = e => { if(e.key==="Enter") i.closest(".tr").querySelector("[data-c]").click(); }; });
+    $("#nx").onclick = () => { if(r < R.length-1){ r++; draw(); window.scrollTo(0,0); } else trans(); };
+  };
+  draw();
+}
+
+// ---------- irregular verbs ----------
+const split = f => { const m = f.match(/^(\S+ \/ \S+|\S+)(.*)$/); return [m[1], m[2]]; };          // "was / were on the move" → ["was / were", " on the move"]
+const okForms = v => v.split(" / ");
+function irregular(){
+  go("irregular", () => {});
+  const R = roundsOf(IRREG, 10); let r = 0;
+  const cell = (form, k, t) => { const [v, rest] = split(form); return `<span class="ivf"><input class="gap" data-k="${k}" data-t="${t}" placeholder="${t==="past"?"simple past":"participle"}" aria-label="${t==="past"?"simple past":"past participle"}" autocomplete="off" autocapitalize="off" spellcheck="false">${esc(rest)}</span>`; };
+  const draw = () => {
+    const set = R[r], P = IRR!=="pp", Q = IRR!=="past";
+    app.innerHTML = `${bar(0,"Vocabulary")}
+    <h1>🐉 Irregular verbs</h1><p class="muted">The irregular verbs from the Theme 1 word list · Round ${r+1} of ${R.length}</p>
+    <section class="card">
+      <p style="margin-bottom:6px"><b>What do you want to practise?</b></p>
+      <div class="seg" role="group" aria-label="Forms">${[["past","Simple past"],["pp","Past participle"],["both","Both"]].map(([k,t])=>`<button data-f="${k}" aria-pressed="${IRR===k}">${t}</button>`).join("")}</div>
+      <div class="ivt">
+        <div class="ivh ${P&&Q?"three":""}"><span>infinitive</span>${P?"<span>simple past</span>":""}${Q?"<span>past participle</span>":""}<span></span></div>
+        ${set.map((v,k)=>`<div class="ivr ${P&&Q?"three":""}" data-i="${k}"><span><b>${esc(v.inf)}</b><small>${esc(v.de)}</small></span>${P?cell(v.past,k,"past"):""}${Q?cell(v.pp,k,"pp"):""}<span class="res"></span>
+          <span class="sol" hidden></span></div>`).join("")}
+      </div>
+      <div class="row"><button class="btn green" id="ci">✓ Check</button><button class="btn alt" id="si">👁 Show solutions</button><button class="btn alt" id="ri">↺ Reset</button><span class="score" id="sci"></span></div>
+    </section>
+    <div class="row" style="justify-content:space-between"><button class="btn alt" id="tab">📋 Show all forms</button>${r < R.length-1 ? `<button class="btn" id="nx">Next round →</button>` : `<button class="btn" id="nx">↺ New mix</button>`}</div>
+    <div id="tbl"></div>`;
+    wireBar(vocabHome);
+    $$("[data-f]").forEach(b => b.onclick = () => { IRR = b.dataset.f; store("t1-irr", IRR); draw(); });
+    const inputs = $$(".ivt .gap");
+    inputs.forEach(g => g.oninput = () => { g.classList.remove("right","wrong"); g.closest(".ivr").querySelector(".res").textContent = ""; });
+    const mark = reveal => {
+      let ok = 0;
+      $$(".ivr").forEach(row => {
+        const v = set[+row.dataset.i], gs = [...row.querySelectorAll(".gap")]; let all = true, any = false;
+        gs.forEach(g => {
+          const forms = okForms(split(v[g.dataset.t])[0]);
+          if(reveal){ g.value = forms.join(" / "); g.classList.remove("wrong"); g.classList.add("right"); return; }
+          const val = norm(g.value).replace(/\s*\/\s*/g," / ");
+          const good = !!val && (forms.some(f => same(val, f)) || val===forms.join(" / "));
+          if(val) any = true;
+          g.classList.toggle("right", good); g.classList.toggle("wrong", !!val && !good); if(!good) all = false;
+        });
+        const res = row.querySelector(".res"), sol = row.querySelector(".sol");
+        if(reveal){ res.textContent = ""; sol.hidden = true; return; }
+        if(!any){ res.textContent = "…"; sol.hidden = true; return; }
+        if(all) ok++;
+        res.textContent = all ? "✅" : "❌";
+        sol.hidden = all; sol.textContent = "→ " + gs.map(g => v[g.dataset.t]).join(" – ");
+      });
+      if(!reveal) $("#sci").textContent = `${ok} / ${set.length}`;
+    };
+    $("#ci").onclick = () => mark(false); $("#si").onclick = () => mark(true);
+    $("#ri").onclick = () => { inputs.forEach(g => { g.value = ""; g.classList.remove("right","wrong"); }); $$(".ivr .res").forEach(x => x.textContent = ""); $$(".ivr .sol").forEach(x => x.hidden = true); $("#sci").textContent = ""; };
+    $("#tab").onclick = () => { const t = $("#tbl"); if(t.innerHTML){ t.innerHTML = ""; return; }
+      t.innerHTML = `<section class="card"><h3>All irregular verbs in Theme 1</h3><table class="vt"><thead><tr><th>infinitive</th><th>simple past</th><th>past participle</th><th>German</th></tr></thead>
+      <tbody>${IRREG.map(v=>`<tr><td>${esc(v.inf)}</td><td>${esc(v.past)}</td><td>${esc(v.pp)}</td><td>${esc(v.de)}</td></tr>`).join("")}</tbody></table></section>`;
+      t.scrollIntoView({ behavior:"smooth" }); };
+    $("#nx").onclick = () => { if(r < R.length-1){ r++; draw(); window.scrollTo(0,0); } else irregular(); };
+  };
+  draw();
+}
+
+// ---------- Say it in English ----------
+function sayList(){
+  go("say", () => {});
+  app.innerHTML = `${bar(0,"Vocabulary")}
+  <h1>💬 Say it in English</h1><p class="muted">Complete the dialogues with the phrases from p. 226. One phrase in each box does not fit.</p>
+  <div class="lessons">${DIALOGUES.map((d,i)=>`<button class="lcard" data-d="${i}"><span class="num">${i+1}</span><span><b>${esc(d.t)}</b><small>${esc(d.f)}</small></span></button>`).join("")}</div>`;
+  wireBar(vocabHome);
+  $$("[data-d]").forEach(b => b.onclick = () => dialogue(+b.dataset.d));
+}
+function dialogue(i){
+  go("say-" + (i+1), () => {});
+  const D = DIALOGUES[i], gapsL = [];
+  const lines = D.l.map((l,li) => {
+    const html = esc(l[1]).replace(/\{\{(.+?)\}\}/g, (m, p) => { gapsL.push(p); return `<button class="pgap" data-g="${gapsL.length-1}" aria-label="gap ${gapsL.length}">&nbsp;</button>`; });
+    return `<div class="bub ${["Cerys","Megan","Ms Jones"].includes(l[0])?"r":""}"><span class="who">${esc(l[0])}</span><p>${html}</p>
+      <button class="debtn" data-de="${li}" aria-pressed="false" title="German translation">🇩🇪</button><p class="detx" hidden>${esc(l[2])}</p></div>`;
+  }).join("");
+  const bank = shuffle([...gapsL.map((p,k)=>({p,k})), { p:D.x, k:-1 }]);
+  app.innerHTML = `${bar(0,"All dialogues")}
+  <h1>💬 ${i+1} · ${esc(D.t)}</h1><p class="muted">${esc(D.f)}</p>
+  <section class="card">
+    <p class="small muted" style="margin-bottom:6px">Tap a gap, then tap a phrase. Tap 🇩🇪 if you need help with a line.</p>
+    <div class="row" style="margin:0 0 10px"><button class="ibtn" id="alld" aria-pressed="false">🇩🇪 Show all German</button></div>
+    <div class="chat">${lines}</div>
+  </section>
+  <div class="pbank" id="pb">${bank.map((b,j)=>`<button class="ph" data-j="${j}">${esc(b.p)}</button>`).join("")}</div>
+  <div class="row"><button class="btn green" id="cd">✓ Check</button><button class="btn alt" id="sd">👁 Show solutions</button><button class="btn alt" id="rd">↺ Reset</button><span class="score" id="scd"></span></div>
+  <div class="row" style="justify-content:space-between">${i>0?`<button class="btn alt" id="pv">← ${esc(DIALOGUES[i-1].t)}</button>`:"<span></span>"}${i<DIALOGUES.length-1?`<button class="btn" id="nd">${esc(DIALOGUES[i+1].t)} →</button>`:`<button class="btn" id="nd">All dialogues</button>`}</div>`;
+  wireBar(sayList);
+  const fill = Array(gapsL.length).fill(null);   // gap → bank index
+  let act = 0;
+  const render = () => {
+    $$(".pgap").forEach(g => { const k = +g.dataset.g, j = fill[k];
+      g.innerHTML = j===null ? "&nbsp;" : esc(bank[j].p); g.classList.toggle("filled", j!==null); g.classList.toggle("act", k===act); g.classList.remove("right","wrong"); });
+    $$(".ph").forEach(b => b.disabled = fill.includes(+b.dataset.j));
+    $("#scd").textContent = "";
+  };
+  $$(".pgap").forEach(g => g.onclick = () => { const k = +g.dataset.g; fill[k] = null; act = k; render(); });
+  $$(".ph").forEach(b => b.onclick = () => {
+    if(act===null) act = fill.indexOf(null);
+    if(act===-1) return;
+    fill[act] = +b.dataset.j; const nxt = fill.indexOf(null); act = nxt===-1 ? null : nxt; render();
+  });
+  $$(".debtn").forEach(b => b.onclick = () => { const t = b.nextElementSibling, on = t.hidden; t.hidden = !on; b.setAttribute("aria-pressed", on); });
+  $("#alld").onclick = () => { const on = $("#alld").getAttribute("aria-pressed")!=="true"; $("#alld").setAttribute("aria-pressed", on); $("#alld").classList.toggle("on", on);
+    $$(".detx").forEach(t => t.hidden = !on); $$(".debtn").forEach(b => b.setAttribute("aria-pressed", on)); };
+  $("#cd").onclick = () => { let ok = 0; act = null; render();
+    $$(".pgap").forEach(g => { const k = +g.dataset.g, j = fill[k]; if(j===null) return; const good = bank[j].p===gapsL[k]; if(good) ok++; g.classList.add(good?"right":"wrong"); });
+    $("#scd").textContent = `${ok} / ${gapsL.length}`; };
+  $("#sd").onclick = () => { gapsL.forEach((p,k) => fill[k] = bank.findIndex(b => b.k===k)); act = null; render(); $$(".pgap").forEach(g => g.classList.add("right")); };
+  $("#rd").onclick = () => { fill.fill(null); act = 0; render(); };
+  const pv = $("#pv"); if(pv) pv.onclick = () => dialogue(i-1);
+  $("#nd").onclick = () => i<DIALOGUES.length-1 ? dialogue(i+1) : sayList();
+  render();
+}
+
+// ---------- routing ----------
+(() => {
+  const h = location.hash.slice(1);
+  const m = h.match(/^say-(\d+)$/);
+  if(LESSONS.find(l => l.id===h)) lesson(h);
+  else if(h==="grammar") home();
+  else if(m && DIALOGUES[+m[1]-1]) dialogue(+m[1]-1);
+  else if(h==="say") sayList();
+  else if(h==="irregular") irregular();
+  else if(h==="vocab") vocabHome();
+  else if(["cards","gaps","trans"].includes(h) && chosen().length) ({cards, gaps, trans})[h]();
+  else startScreen();
+})();
+
+})();
+</script>
+</body>
+</html>
